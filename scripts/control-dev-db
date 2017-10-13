@@ -8,7 +8,7 @@ if [ $1 == "build" ]; then
     echo Built the dev DB image
 elif [ $1 == "init" ]; then
     echo Container ID:
-    docker run --name $CONTAINER -d $IMAGE
+    docker run --name $CONTAINER -p 3316:3306 -d $IMAGE
     echo Container $CONTAINER is now initialised and running
 elif [ $1 == "up" ]; then
     echo Container name:
