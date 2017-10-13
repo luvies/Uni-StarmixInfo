@@ -1,0 +1,34 @@
+#! /bin/sh
+IMAGE="starmix-dev-db-img"
+CONTAINER="starmix-dev-db"
+
+if [ $1 == "build" ]; then
+    echo Building dev DB docker image...
+    docker build -t $IMAGE ../db/
+    echo Built the dev DB image
+elif [ $1 == "init" ]; then
+    echo Container ID:
+    docker run --name $CONTAINER -d $IMAGE
+    echo Container $CONTAINER is now initialised and running
+elif [ $1 == "up" ]; then
+    echo Container name:
+    docker start $CONTAINER
+    echo Container is now up
+elif [ $1 == "down" ]; then
+    echo Container name:
+    docker stop $CONTAINER
+    echo Container is now down
+elif [ $1 == "clean" ]; then
+    echo Container name:
+    docker container rm $CONTAINER
+    echo Container has been deleted
+elif [ $1 == "info" ]; then
+    docker container stats --no-stream $CONTAINER
+elif [ $1 == "rebuild-init" ]; then
+    echo ==== Beginning full build \& init cycle ====
+    ./$0 down
+    ./$0 clean
+    ./$0 build
+    ./$0 init
+    echo ==== Completed build \& init ====
+fi
