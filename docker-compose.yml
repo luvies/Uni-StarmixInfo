@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  starmixinfo:
+    image: starmixinfo
+    build:
+      context: ./StarmixInfo
+      dockerfile: Dockerfile
