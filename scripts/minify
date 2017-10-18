@@ -1,0 +1,39 @@
+#! /usr/bin/env python3
+import os
+import subprocess
+import json
+import re
+
+BUNDLE_CONFIG = "bundleconfig.json"
+
+
+def min_js(inputs, output):
+    subprocess.run(["uglifyjs"] + inputs +
+                   ["-o", output, "--mangle", "--compress"])
+
+
+# def min_css(inputs, output):
+    # subprocess.run(["glifycss", "--output",
+    #                 output] + inputs, cwd=os.getcwd())
+    # os.system(" ".join(["uglifycss", "--output", output] + inputs))
+    # print("uglifycss " + " ".join(inputs) + " > " + output)
+    # os.system("uglifycss " + " ".join(inputs) + " > " + output)
+    # os.system("../scripts/minify-helper --output " + utput + " " + " ".join(inputs))
+    # subprocess.run(["bash", "../scripts/minify-helper", "--output",
+    #                 output] + inputs)
+
+
+if __name__ == "__main__":
+    print("Reading settings...")
+    config = None
+    with open(BUNDLE_CONFIG, "br") as f:
+        content = f.read().decode("utf-8-sig")
+        # print(content)
+        stripped = re.sub(r"// .*?$", "", content, flags=re.M)
+        # print(stripped)
+        config = json.loads(stripped)
+    # print("Minimising CSS...")
+    # min_css(config[0]["inputFiles"], config[0]["outputFileName"])
+    print("Minimising JS...")
+    min_js(config[1]["inputFiles"], config[0]["outputFileName"])
+    print("Done!")

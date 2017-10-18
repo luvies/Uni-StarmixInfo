@@ -16,6 +16,7 @@ ssh ubuntu@starmix.devsprime.com '\
         --name webserver \
         --network webserver_nw \
         --restart always \
+        -v /var/dev/logs:/app/Logs \
         -d starmixinfo:latest; \
     sudo docker image prune -f'
 echo Done! Webserver has been re-deployed
