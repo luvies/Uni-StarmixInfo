@@ -1,0 +1,39 @@
+﻿@model Tuple<IEnumerable<StarmixInfo.Models.Data.Project>, int?>
+@{
+    ViewData["Title"] = "All Projects";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel-group">
+            @foreach (var proj in Model.Item1) {
+                <div class="panel @(proj.ProjectID == Model.Item2 ? "panel-success" : "panel-default")"> @* add current project highlight *@
+                    <div class="panel-heading">
+                        <h3>@proj.Name</h3>
+                        <p>@proj.ShortDesc</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="row">
+    							<div class="col=sm-12">
+                                    @foreach (var line in proj.LongDesc.Split(Environment.NewLine))
+                                    {
+                                        <p>@line</p>
+                                    }
+    							</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3">
+    								<a class="btn btn-primary" href="/Projects/@proj.ProjectID">View Details</a>
+                                </div>
+                                <div class="col-sm-3 col-sm-offset-6">
+    								<a class="btn btn-default" href="/Projects/@proj.ProjectID" style="float: right;">View Builds</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

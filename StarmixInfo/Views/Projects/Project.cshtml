@@ -1,0 +1,46 @@
+﻿@model StarmixInfo.Models.Data.Project
+@{
+    ViewData["Title"] = "Project " + Model.Name;
+}
+
+@if (Model == null) {
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Unable to find project</h1>
+        </div>
+    </div>
+}
+else {
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>@Model.Name</h1>
+    	</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <p>@Model.ShortDesc</p>
+    	</div>
+    	<div class="col-sm-3 col-sm-offset-3">
+            <a class="btn btn-default" href="/Projects/@Model.ProjectID/Builds" style="float: right;">View Builds</a>
+    	</div>
+    </div>
+    <hr />
+    foreach (var line in Model.LongDesc.Split(Environment.NewLine)) {
+        <div class="row">
+            <div class="col-sm-12">
+                <p>@line</p>
+            </div>
+        </div>
+    }
+    <hr />
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Documentation</h3>
+	    </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <iframe src="https://drive.google.com/embeddedfolderview?id=@(Model.GDocFolderID)#list" style="width:100%; height:450px; border:0;"></iframe>
+    	</div>
+    </div>
+}

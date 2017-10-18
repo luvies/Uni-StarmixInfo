@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace StarmixInfo
 {
@@ -23,14 +26,22 @@ namespace StarmixInfo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            //services.Configure<MvcOptions>(options =>
-            //{
-            //    options.Filters.Add(new RequireHttpsAttribute());
-            //});
+            services.AddDbContext<Models.DataContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+
+            // needed services
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            // custom services
+            services.AddScoped<Services.IAdminLogon, Services.AdminLogon>();
+            services.AddScoped<Services.IDbSettings, Services.DbSettings>();
+            services.AddScoped<Services.IConfigHelper, Services.ConfigHelper>();
+            services.AddSingleton<Services.IUnityApiHelper, Services.UnityApiHelper>(impFactory => {
+                return new Services.UnityApiHelper(Configuration.GetValue<string>("UnityAuthToken"), impFactory.GetService<ILogger<Services.UnityApiHelper>>());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
@@ -41,14 +52,16 @@ namespace StarmixInfo
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
-
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+            // log hits
+            app.Use((context, next) => {
+                logger.LogInformation("hit from {0}", context.Connection.RemoteIpAddress);
+                return next();
             });
+
+            // setup app
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

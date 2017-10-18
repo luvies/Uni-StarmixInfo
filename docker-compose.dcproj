@@ -12,8 +12,8 @@
     <CustomCommands>
       <CustomCommands>
         <Command>
-          <type>BeforeBuild</type>
-          <command>docker image rm starmixinfo:latest</command>
+          <type>AfterBuild</type>
+          <command>docker image prune -f</command>
         </Command>
       </CustomCommands>
     </CustomCommands>

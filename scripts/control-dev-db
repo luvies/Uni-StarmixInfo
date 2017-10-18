@@ -5,6 +5,7 @@ CONTAINER="starmix-dev-db"
 if [ $1 == "build" ]; then
     echo Building dev DB docker image...
     docker build -t $IMAGE ../db/
+    docker image prune -f
     echo Built the dev DB image
 elif [ $1 == "init" ]; then
     echo Container ID:

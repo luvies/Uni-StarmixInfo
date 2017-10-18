@@ -13,6 +13,9 @@ namespace StarmixInfo
 {
     public class Program
     {
+        const string LogFolder = "Logs";
+        const string LogFile = "webserver-{Date}.log";
+
         public static void Main(string[] args)
         {
             BuildWebHost(args).Run();
@@ -20,23 +23,17 @@ namespace StarmixInfo
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                    .UseStartup<Startup>()
-//                    .UseKestrel(options =>
-//                    {
-//#if DEBUG
-//                        //options.Listen(IPAddress.Loopback, 5000);
-//                        //options.Listen(IPAddress.Loopback, 5001, listenOpts =>
-//                        //{
-//                        //    listenOpts.UseHttps("devCert.pfx");
-//                        //});
-//#else
-//                        options.Listen(IPAddress.Any, 80);
-//                        options.Listen(IPAddress.Any, 443, listenOpts =>
-//                        {
-//                            listenOpts.UseHttps("devCert.pfx");
-//                        });
-//#endif
-                    //})
-                    .Build();
+                   .UseStartup<Startup>()
+                   .ConfigureAppConfiguration(
+                       (context, config) =>
+                       {
+                           config.AddJsonFile("Secrets/appsecrets.json",
+                                              false);
+                           config.AddJsonFile($"Secrets/appsecrets.{context.HostingEnvironment.EnvironmentName}.json",
+                                              false);
+                       })
+                   .ConfigureLogging(loggerFactory =>
+                                     loggerFactory.AddFile(Path.Combine(LogFolder, LogFile), isJson: true))
+                   .Build();
     }
 }

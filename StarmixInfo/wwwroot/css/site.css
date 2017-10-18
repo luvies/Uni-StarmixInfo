@@ -8,22 +8,19 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 20px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+.footer-items {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
-}
-
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+.footer-items li {
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Hide/rearrange for smaller screens */
@@ -32,4 +29,29 @@
     .carousel-caption {
         display: none;
     }
+}
+
+/* project edit items */
+.admin-proj-btn {
+    display: inline;
+    float: right;
+    margin-left: 25px;
+    margin-right: -15px;
+}
+
+.proj-build-item {
+    margin-top: 20px;
+}
+
+.proj-build-item p {
+    margin-top: 5px;
+}
+
+.proj-build-item-panel {
+    margin-bottom: 0px;
+}
+
+.proj-build-item-panel-heading {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

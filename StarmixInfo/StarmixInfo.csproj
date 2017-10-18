@@ -5,12 +5,28 @@
     <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DefineConstants>TRACE;DEBUG;NETCOREAPP2_0;TEST_ADMIN</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0-dev-00023" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.0.1-preview-10069" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Models\Data\" />
+    <Folder Include="Secrets\" />
+    <Folder Include="Services\" />
+    <Folder Include="Views\Projects\" />
+    <Folder Include="Models\Unity\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Home\Contact.cshtml" />
+  </ItemGroup>
 </Project>

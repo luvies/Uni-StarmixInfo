@@ -5,13 +5,17 @@ echo Saving image to tar...
 docker save -o ../bin/images/starmixinfo.tar starmixinfo:latest
 echo Done!
 echo Uploading tar to server...
-scp -C ../bin/images/starmixinfo.tar ubuntu@starmix.devsprime.com:/var/dev/docker-images/
+scp -C ../bin/images/starmixinfo.tar ubuntu@starmix.devsprime.com:/var/dev/docker/images/
 echo Uploaded!
 echo Loading tar as image and restarting server...
 ssh ubuntu@starmix.devsprime.com '\
-    sudo docker load -i /var/dev/docker-images/starmixinfo.tar; \
+    sudo docker load -i /var/dev/docker/images/starmixinfo.tar; \
     sudo docker container stop webserver;
     sudo docker container rm webserver; \
-    sudo docker container run --name webserver -p 80:80 -p 443:443 -d --restart always starmixinfo:latest; \
+    sudo docker container run \
+        --name webserver \
+        --network webserver_nw \
+        --restart always \
+        -d starmixinfo:latest; \
     sudo docker image prune -f'
 echo Done! Webserver has been re-deployed
