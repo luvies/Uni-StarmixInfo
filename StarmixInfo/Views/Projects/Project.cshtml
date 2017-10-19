@@ -25,13 +25,15 @@ else {
     	</div>
     </div>
     <hr />
-    foreach (var line in Model.LongDesc.Split(Environment.NewLine)) {
-        <div class="row">
-            <div class="col-sm-12">
-                <p>@line</p>
-            </div>
+    <div class="row">
+        <div class="col-sm-12 proj-long-desc-col">
+            <div class="container-fluid"> @* long desc is html code in this div block *@
+                <!-- long description HTML raw injection -->
+                @Html.Raw(Model.LongDesc)
+			    <!-- finished long description raw injection -->
+		    </div>
         </div>
-    }
+    </div>
     <hr />
     <div class="row">
         <div class="col-sm-12">

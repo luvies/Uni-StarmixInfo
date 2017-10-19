@@ -63,11 +63,12 @@ status codes:
         			<div class="panel-body">
         				<div class="container-fluid">
         					<div class="row">
-    							<div class="col-sm-12">
-            						@foreach (var line in proj.LongDesc.Split(Environment.NewLine))
-            						{
-                                        <p>@line</p>
-            						}
+    							<div class="col-sm-12 proj-long-desc-col">
+								    <div class="container-fluid"> @* long desc is html code in this div block *@
+									    <!-- long description HTML raw injection -->
+								        @Html.Raw(proj.LongDesc)
+									    <!-- finished long description raw injection -->
+									</div>
     							</div>
         					</div>
         					<div class="row">

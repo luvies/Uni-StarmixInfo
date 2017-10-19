@@ -39,6 +39,7 @@
     margin-right: -15px;
 }
 
+/* project build page panel styling */
 .proj-build-item {
     margin-top: 20px;
 }
@@ -54,4 +55,8 @@
 .proj-build-item-panel-heading {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.proj-long-desc-col {
+    padding: 0;
 }

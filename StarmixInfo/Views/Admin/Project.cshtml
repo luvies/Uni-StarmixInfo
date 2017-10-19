@@ -15,7 +15,7 @@
                 <input type="text" class="form-control" name="shortdesc" id="shortdesc" value="@(Model?.ShortDesc ?? "")">
             </div>
             <div class="form-group">
-                <lable for="longdesc">Long Description: </lable>
+                <lable for="longdesc">Long Description (HTML code contained in @("<div class=\"container-fluid\"></div>") tags): </lable>
     			<textarea type="text" class="form-control" name="longdesc" id="longdesc" rows="7">@(Model?.LongDesc ?? "")</textarea>
             </div>
             <div class="form-group">
