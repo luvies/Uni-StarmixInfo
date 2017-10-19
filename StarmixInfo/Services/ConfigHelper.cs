@@ -1,5 +1,4 @@
-﻿using System;
-namespace StarmixInfo.Services
+﻿namespace StarmixInfo.Services
 {
     public class ConfigHelper : IConfigHelper
     {

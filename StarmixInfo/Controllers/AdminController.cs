@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StarmixInfo.Models;
@@ -243,13 +242,13 @@ namespace StarmixInfo.Controllers
 
         // ===== helpers =====
 
-        private bool SetProjectInfo(int? id,
-                                    string name,
-                                    string shortdesc,
-                                    string longdesc,
-                                    string unityorgid,
-                                    string unityprojid,
-                                    string gdocfolderid)
+        bool SetProjectInfo(int? id,
+                            string name,
+                            string shortdesc,
+                            string longdesc,
+                            string unityorgid,
+                            string unityprojid,
+                            string gdocfolderid)
         {
             try
             {
