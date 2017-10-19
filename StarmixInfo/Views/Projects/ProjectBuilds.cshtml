@@ -2,7 +2,7 @@
 @using StarmixInfo.Models.Unity
 @model Tuple<Project, Dictionary<Platform, List<BuildModel>>>
 @{
-    ViewData["Title"] = Model.Item1 == null ? Model.Item1.Name + " Builds" : "Unknown Project";
+    ViewData["Title"] = Model.Item1 != null ? Model.Item1.Name + " Builds" : "Unknown Project";
     const string buildTimeFormat = "yyyy-MM-dd HH:mm:ss zzz";
 }
 
