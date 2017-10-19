@@ -25,15 +25,7 @@ else {
     	</div>
     </div>
     <hr />
-    <div class="row">
-        <div class="col-sm-12 proj-long-desc-col">
-            <div class="container-fluid"> @* long desc is html code in this div block *@
-                <!-- long description HTML raw injection -->
-                @Html.Raw(Model.LongDesc)
-			    <!-- finished long description raw injection -->
-		    </div>
-        </div>
-    </div>
+    @Html.Partial("_ProjectLongDesc", Model.LongDesc)
     <hr />
     <div class="row">
         <div class="col-sm-12">

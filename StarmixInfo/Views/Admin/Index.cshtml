@@ -62,15 +62,7 @@ status codes:
         			</div>
         			<div class="panel-body">
         				<div class="container-fluid">
-        					<div class="row">
-    							<div class="col-sm-12 proj-long-desc-col">
-								    <div class="container-fluid"> @* long desc is html code in this div block *@
-									    <!-- long description HTML raw injection -->
-								        @Html.Raw(proj.LongDesc)
-									    <!-- finished long description raw injection -->
-									</div>
-    							</div>
-        					</div>
+        					@Html.Partial("_ProjectLongDesc", proj.LongDesc)
         					<div class="row">
         						<div class="col-sm-4 col-sm-offset-8">
                                     <form class="admin-proj-btn" action="/Admin/Delete/@proj.ProjectID" method="post" onsubmit="return confirm('Are you sure you want to delete this project?')">

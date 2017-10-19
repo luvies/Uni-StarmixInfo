@@ -1,0 +1,12 @@
+﻿@model string
+@* a helper partial to render the long description of a project *@
+
+<div class="row">
+    <div class="col-sm-12 proj-long-desc-col">
+        <div class="container-fluid"> @* long desc is html code in this div block *@
+            <!-- long description HTML raw injection -->
+            @Html.Raw(Model)
+            <!-- finished long description raw injection -->
+        </div>
+    </div>
+</div>
