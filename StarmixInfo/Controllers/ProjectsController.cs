@@ -30,7 +30,7 @@ namespace StarmixInfo.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View(Tuple.Create<IEnumerable<Project>, int?>(_dbContext.Projects.ToList(), _configHelper.CurrentProject));
+            return View(((IEnumerable<Project>)_dbContext.Projects.ToList(), _configHelper.CurrentProject));
         }
 
         // GET: /<controller>/{id}
@@ -60,7 +60,7 @@ namespace StarmixInfo.Controllers
             {
                 allBuilds.Add(platform, await _unityApiHelper.GetBuilds(proj.UnityOrgID, proj.UnityProjectID, platform));
             }
-            return View("ProjectBuilds", Tuple.Create(proj, allBuilds));
+            return View("ProjectBuilds", (proj, allBuilds));
         }
     }
 }

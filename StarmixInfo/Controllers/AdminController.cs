@@ -44,9 +44,7 @@ namespace StarmixInfo.Controllers
             // 5: delete successed
             // 6: delete failed
             // 7: current project set
-            return View(Tuple.Create<int, IEnumerable<Project>, int?>(status,
-                                                                      _dbContext.Projects.ToList(),
-                                                                      _configHelper.CurrentProject));
+            return View((status, (IEnumerable<Project>)_dbContext.Projects.ToList(), _configHelper.CurrentProject));
         }
 
         // GET: /<controller>/Login
