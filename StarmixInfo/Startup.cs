@@ -57,7 +57,7 @@ namespace StarmixInfo
 
             // setup app
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions { ServeUnknownFileTypes = true });
             app.UseMvcWithDefaultRoute();
         }
     }

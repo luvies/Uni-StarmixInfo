@@ -1,0 +1,61 @@
+﻿@model ValueTuple<int, IEnumerable<StarmixInfo.Models.UploadedFile>>
+@{
+    ViewData["Title"] = "Media";
+}
+
+@*
+status codes:
+1: file uploaded
+3: file deleted
+4: unable to delete file
+*@
+@if (Model.Item1 > 0) {
+    switch (Model.Item1) {
+        case 1:
+                Html.RenderPartial("_StatusPanel", (true, "File uploaded"));
+            break;
+        case 3:
+                Html.RenderPartial("_StatusPanel", (true, "File deleted"));
+            break;
+        case 4:
+                Html.RenderPartial("_StatusPanel", (false, "Unable to delete file"));
+            break;
+    }
+}
+<div class="row">
+    <div class="col-sm-12">
+        <form class="form-inline" method="post" enctype="multipart/form-data" asp-action="MediaUpload">
+            <div class="form-group">
+                <lable for="file">Upload file: </lable>
+                <input type="file" class="form-control" name="files" id="file" multiple/>
+            </div>
+			<button type="submit" class="btn btn-default">Upload</button>
+		</form>
+    </div>
+</div>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-sm-12">
+		<div class="panel-group">
+            @foreach (var file in Model.Item2) {
+                <div class="panel panel-default">
+				    <div class="panel-body">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <p>@file.FileName (<a href="@file.UriPath">@file.UriPath</a>)</p>
+								    <p>Upload Date: @file.UploadDate</p>
+							    </div>
+							    <div class="col-sm-4">
+                                    <form method="post" style="float: right;" asp-action="MediaDelete">
+									    <input type="hidden" name="filename" value="@file.FileName"/>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+								    </form>
+							    </div>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+            }
+		</div>
+    </div>
+</div>

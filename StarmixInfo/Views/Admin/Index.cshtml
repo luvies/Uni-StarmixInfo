@@ -14,33 +14,29 @@ status codes:
 7: current project set
 *@
 @if (Model.Item1 > 0) {
-    <div class="row">
-	    <div class="col-sm-12">
-            @switch (Model.Item1) {
-                case 1:
-    	                Html.RenderPartial("_StatusPanel", (true, "New project created"));
-                    break;
-                case 2:
-                        Html.RenderPartial("_StatusPanel", (false, "Unable to create project"));
-                    break;
-                case 3:
-                        Html.RenderPartial("_StatusPanel", (true, "Project updated"));
-                    break;
-                case 4:
-                        Html.RenderPartial("_StatusPanel", (false, "Unable to update project"));
-                    break;
-                case 5:
-                        Html.RenderPartial("_StatusPanel", (true, "Project deleted"));
-                    break;
-                case 6:
-                        Html.RenderPartial("_StatusPanel", (false, "Unable to delete project"));
-                    break;
-    	        case 7:
-    	                Html.RenderPartial("_StatusPanel", (true, "Current project set"));
-    	            break;
-            }
-		</div>
-	</div>
+    switch (Model.Item1) {
+        case 1:
+                Html.RenderPartial("_StatusPanel", (true, "New project created"));
+            break;
+        case 2:
+                Html.RenderPartial("_StatusPanel", (false, "Unable to create project"));
+            break;
+        case 3:
+                Html.RenderPartial("_StatusPanel", (true, "Project updated"));
+            break;
+        case 4:
+                Html.RenderPartial("_StatusPanel", (false, "Unable to update project"));
+            break;
+        case 5:
+                Html.RenderPartial("_StatusPanel", (true, "Project deleted"));
+            break;
+        case 6:
+                Html.RenderPartial("_StatusPanel", (false, "Unable to delete project"));
+            break;
+        case 7:
+                Html.RenderPartial("_StatusPanel", (true, "Current project set"));
+            break;
+    }
 }
 <div class="row">
 	<div class="col-sm-12">
@@ -78,7 +74,10 @@ status codes:
 	</div>
 </div>
 <div class="row">
-    <div class="col-sm-offset-9 col-sm-3">
+	<div class="col-sm-3">
+        <a class="btn btn-default" asp-action="Media">Media</a>
+	</div>
+    <div class="col-sm-offset-6 col-sm-3">
         <a class="btn btn-success" style="float: right;" asp-action="New">New Project</a>
 	</div>
 </div>

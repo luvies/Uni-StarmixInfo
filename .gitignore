@@ -42,8 +42,9 @@ Thumbs.db
 # secrets
 [Ss]ecrets/
 
-# Dev Logs
+# Auto generated folders
 [Ll]ogs/
+[Uu]ploads/
 
 # Auto generated files
 .vs/

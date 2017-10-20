@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using StarmixInfo.Models;
 using StarmixInfo.Models.Data;
@@ -14,18 +19,23 @@ namespace StarmixInfo.Controllers
     [Route("Admin")]
     public class AdminController : Controller
     {
+        const string _FileUploadPath = "uploads";
+
         readonly DataContext _dbContext;
         readonly ILogger<AdminController> _logger;
         readonly IAdminLogon _adminLogon;
         readonly IConfigHelper _configHelper;
+        readonly IHostingEnvironment _hostEnvrionment;
 
         public AdminController(DataContext dbContext, ILogger<AdminController> logger,
-                               IAdminLogon adminLogon, IConfigHelper configHelper)
+                               IAdminLogon adminLogon, IConfigHelper configHelper,
+                              IHostingEnvironment hostEnvrironment)
         {
             _dbContext = dbContext;
             _logger = logger;
             _adminLogon = adminLogon;
             _configHelper = configHelper;
+            _hostEnvrionment = hostEnvrironment;
         }
 
         // GET: /<controller>/
@@ -46,6 +56,8 @@ namespace StarmixInfo.Controllers
             // 7: current project set
             return View((status, (IEnumerable<Project>)_dbContext.Projects.ToList(), _configHelper.CurrentProject));
         }
+
+        #region Login & Password Managment
 
         // GET: /<controller>/Login
         [HttpGet("Login")]
@@ -74,7 +86,7 @@ namespace StarmixInfo.Controllers
             }
             if (_adminLogon.AttemptLogin(password))
             {
-                _logger.LogInformation("loggin attempt successful");
+                _logger.LogInformation("login attempt successful");
                 return RedirectToAction(nameof(Index));
             }
             _logger.LogInformation("login attempt failed");
@@ -105,6 +117,8 @@ namespace StarmixInfo.Controllers
             _logger.LogInformation("user set the admin password");
             return RedirectToAction(nameof(Login));
         }
+
+        #endregion
 
         #region Project Management
 
@@ -228,7 +242,7 @@ namespace StarmixInfo.Controllers
             }
         }
 
-        // ===== helpers =====
+        #region Helpers
 
         bool SetProjectInfo(int? id,
                             string name,
@@ -266,6 +280,75 @@ namespace StarmixInfo.Controllers
                 _logger.LogWarning(ex, "Unable to create/update project (id: {0})", id);
                 return false;
             }
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Media Management
+
+        [HttpGet("Media")]
+        public IActionResult Media(int status = 0)
+        {
+            if (!_adminLogon.LoggedIn)
+            {
+                _logger.LogInformation("user not logged in, redirecting...");
+                return RedirectToAction(nameof(Login));
+            }
+            List<UploadedFile> files = new List<UploadedFile>();
+            foreach (var file in _hostEnvrionment.WebRootFileProvider.GetDirectoryContents(_FileUploadPath))
+            {
+                UploadedFile ufile = new UploadedFile(file.Name, file.LastModified.DateTime, _FileUploadPath);
+                _logger.LogDebug("found file {0} (uri: {1}, uploaded: {2})", file.PhysicalPath, ufile.UriPath, ufile.UploadDate);
+                files.Add(ufile);
+            }
+            // status codes:
+            // 1: file uploaded
+            // 3: file deleted
+            // 4: unable to delete file
+            return View((status, (IEnumerable<UploadedFile>)files));
+        }
+
+        [HttpPost("Media/Upload")]
+        async public Task<IActionResult> MediaUpload(List<IFormFile> files)
+        {
+            if (!_adminLogon.LoggedIn)
+            {
+                _logger.LogInformation("user not logged in, redirecting...");
+                return RedirectToAction(nameof(Login));
+            }
+            foreach (var formFile in files)
+            {
+                if (formFile.Length > 0)
+                {
+                    string filePath = Path.Combine(_hostEnvrionment.WebRootPath, _FileUploadPath, formFile.FileName);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await formFile.CopyToAsync(stream);
+                        _logger.LogInformation("saved file {0} to {1}", formFile.FileName, filePath);
+                    }
+                }
+            }
+            return RedirectToAction(nameof(Media), new { status = 1 });
+        }
+
+        [HttpPost("Media/Delete")]
+        public IActionResult MediaDelete(string filename)
+        {
+            if (!_adminLogon.LoggedIn)
+            {
+                _logger.LogInformation("user not logged in, redirecting...");
+                return RedirectToAction(nameof(Login));
+            }
+            IFileInfo file = _hostEnvrionment.WebRootFileProvider.GetFileInfo(Path.Combine(_FileUploadPath, filename));
+            if (file.Exists)
+            {
+                System.IO.File.Delete(file.PhysicalPath);
+                _logger.LogInformation("deleted file {0}", file.PhysicalPath);
+                return RedirectToAction(nameof(Media), new { status = 3 });
+            }
+            return RedirectToAction(nameof(Media), new { status = 4 });
         }
 
         #endregion
