@@ -36,14 +36,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Admin\" />
-    <Folder Include="Models\Data\" />
     <Folder Include="Secrets\" />
-    <Folder Include="Services\" />
-    <Folder Include="Views\Projects\" />
-    <Folder Include="Models\Unity\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="Views\Home\Contact.cshtml" />
   </ItemGroup>
 </Project>
