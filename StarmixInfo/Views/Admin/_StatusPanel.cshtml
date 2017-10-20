@@ -1,0 +1,5 @@
+﻿@model ValueTuple<bool, string>
+
+<div class="panel @(Model.Item1 ? "panel-success" : "panel-danger")">
+    <div class="panel-heading">@Model.Item2</div>
+</div>

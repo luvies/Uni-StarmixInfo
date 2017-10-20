@@ -3,15 +3,6 @@
     ViewData["Title"] = "Admin";
 }
 
-@functions {
-    string GenStatusPanel(bool status, string content)
-    {
-        return "<div class=\"panel " + (status ? "panel-success" : "panel-danger") + "\">" +
-                    "<div class=\"panel-heading\">" + content + "</div>" +
-                 "</div>";
-    }
-}
-
 @*
 status codes:
 1: create succeeded
@@ -25,27 +16,27 @@ status codes:
 @if (Model.Item1 > 0) {
     <div class="row">
 	    <div class="col-sm-12">
-            @switch (Model.Item1) { @* honestly this is kind of a bodge, but it works *@
+            @switch (Model.Item1) {
                 case 1:
-    	                @: @Html.Raw(GenStatusPanel(true, "New project created"))
+    	                Html.RenderPartial("_StatusPanel", (true, "New project created"));
                     break;
                 case 2:
-                        @: @Html.Raw(GenStatusPanel(false, "Unable to create project"))
+                        Html.RenderPartial("_StatusPanel", (false, "Unable to create project"));
                     break;
                 case 3:
-                        @: @Html.Raw(GenStatusPanel(true, "Project updated"))
+                        Html.RenderPartial("_StatusPanel", (true, "Project updated"));
                     break;
                 case 4:
-                        @: @Html.Raw(GenStatusPanel(false, "Unable to update project"))
+                        Html.RenderPartial("_StatusPanel", (false, "Unable to update project"));
                     break;
                 case 5:
-                        @: @Html.Raw(GenStatusPanel(true, "Project deleted"))
+                        Html.RenderPartial("_StatusPanel", (true, "Project deleted"));
                     break;
                 case 6:
-                        @: @Html.Raw(GenStatusPanel(false, "Unable to delete project"))
+                        Html.RenderPartial("_StatusPanel", (false, "Unable to delete project"));
                     break;
     	        case 7:
-    	                @: @Html.Raw(GenStatusPanel(true, "Current project set"))
+    	                Html.RenderPartial("_StatusPanel", (true, "Current project set"));
     	            break;
             }
 		</div>
