@@ -89,11 +89,6 @@ namespace StarmixInfo.Controllers
                 _logger.LogInformation("password already set, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
-            //if (_adminLogon.LoggedIn)
-            //{
-            //    _logger.LogInformation("user logged in, redirecting...");
-            //    return RedirectToAction(nameof(Index));
-            //}
             return View();
         }
 
@@ -105,11 +100,6 @@ namespace StarmixInfo.Controllers
                 _logger.LogInformation("password already set, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
-            //if (_adminLogon.LoggedIn)
-            //{
-            //    _logger.LogInformation("user logged in, redirecting...");
-            //    return RedirectToAction(nameof(Index));
-            //}
             _adminLogon.SetPassword(password);
             _adminLogon.AttemptLogin(password);
             _logger.LogInformation("user set the admin password");
