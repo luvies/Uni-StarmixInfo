@@ -1,7 +1,4 @@
 #! /bin/bash
-CONTAINER="webserver"
-WEBSERVER_VOLUMES="/var/dev/docker/volumes/starmixinfo"
-
 echo Saving image to tar...
 docker save -o ../bin/images/starmixinfo.tar starmixinfo:latest
 echo Done!
@@ -11,14 +8,14 @@ echo Uploaded!
 echo Loading tar as image and restarting server...
 ssh ubuntu@starmix.devsprime.com '\
     sudo docker load -i /var/dev/docker/images/starmixinfo.tar; \
-    sudo docker container stop webserver;
-    sudo docker container rm webserver; \
+    sudo docker container stop wserv_starmixinfo;
+    sudo docker container rm wserv_starmixinfo; \
     sudo docker container run \
-        --name webserver \
+        --name wserv_starmixinfo \
         --network webserver_nw \
         --restart always \
-        -v $WEBSERVER_VOLUMES/logs:/app/Logs \
-        -v $WEBSERVER_VOLUMES/uploads:/app/wwwroot/uploads \
+        -v /var/dev/docker/volumes/starmixinfo/logs:/app/Logs \
+        -v /var/dev/docker/volumes/starmixinfo/uploads:/app/wwwroot/uploads \
         -d starmixinfo:latest; \
     sudo docker image prune -f'
 echo Done! Webserver has been re-deployed
