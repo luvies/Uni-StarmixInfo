@@ -56,14 +56,15 @@ status codes:
         					@Html.Partial("_ProjectLongDesc", proj.LongDesc)
         					<div class="row">
         						<div class="col-sm-4 col-sm-offset-8">
-                                    <form class="admin-proj-btn" action="/Admin/Delete/@proj.ProjectID" method="post" onsubmit="return confirm('Are you sure you want to delete this project?')">
+                                    <form class="admin-proj-btn" method="post" onsubmit="return confirm('Are you sure you want to delete this project?')"
+									        asp-action="Delete" asp-route-id="@proj.ProjectID">
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
-                                    <form class="admin-proj-btn" action="/Admin/Edit/@proj.ProjectID" method="get">
+                                    <form class="admin-proj-btn" method="get" asp-action="Edit" asp-route-id="@proj.ProjectID">
                                         <button type="submit" class="btn btn-primary">Edit</button>
                                     </form>
         							@if (proj.ProjectID != Model.Item3) {
-                                        <form class="admin-proj-btn" action="/Admin/SetCurrent/@proj.ProjectID" method="get">
+                                        <form class="admin-proj-btn" method="get" asp-action="SetCurrent" asp-route-id="@proj.ProjectID">
                                             <button type="submit" class="btn btn-warning">Set As Current Project</button>
                                         </form>
         							}
@@ -78,6 +79,6 @@ status codes:
 </div>
 <div class="row">
     <div class="col-sm-offset-9 col-sm-3">
-        <a class="btn btn-success" href="/Admin/New" style="float: right;">New Project</a>
+        <a class="btn btn-success" style="float: right;" asp-action="New">New Project</a>
 	</div>
 </div>

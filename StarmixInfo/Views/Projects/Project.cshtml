@@ -21,7 +21,7 @@ else {
             <p>@Model.ShortDesc</p>
     	</div>
     	<div class="col-sm-3 col-sm-offset-3">
-            <a class="btn btn-default" href="/Projects/@Model.ProjectID/Builds" style="float: right;">View Builds</a>
+            <a class="btn btn-default" style="float: right;" asp-action="ProjectBuilds" asp-route-id="@Model.ProjectID">View Builds</a>
     	</div>
     </div>
     <hr />

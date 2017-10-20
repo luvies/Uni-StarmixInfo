@@ -5,7 +5,7 @@
 
 <div class="row">
 	<div class="col-sm-12">
-        <form action="/Admin/@(Model != null ? "Edit/" + Model.ProjectID.ToString() : "New")" method="post">
+        <form method="post" asp-action="@(Model != null ? "Edit" : "New")" asp-route-id="@(Model?.ProjectID.ToString() ?? "")">
             <div class="form-group">
                 <lable for="name">Project Name: </lable>
     			<input type="text" class="form-control" name="name" id="name" value="@(Model?.Name ?? "")">

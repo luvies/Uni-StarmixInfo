@@ -19,10 +19,10 @@ else {
     @Html.Partial("_ProjectLongDesc", Model.LongDesc)
     <div class="row" style="margin-top: 20px;">
         <div class="col-sm-3">
-            <a class="btn btn-primary" href="/Projects/@Model.ProjectID">View Details</a>
+            <a class="btn btn-primary" asp-controller="Projects" asp-action="Project" asp-route-id="@Model.ProjectID">View Details</a>
 	    </div>
 	    <div class="col-sm-3 col-sm-offset-6">
-            <a class="btn btn-default" href="/Projects/@Model.ProjectID/Builds" style="float: right;">View Builds</a>
+            <a class="btn btn-default" style="float: right;" asp-controller="Projects" asp-action="ProjectBuilds" asp-route-id="@Model.ProjectID">View Builds</a>
 	    </div>
     </div>
 }

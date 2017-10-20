@@ -17,10 +17,10 @@
                             @Html.Partial("_ProjectLongDesc", proj.LongDesc)
                             <div class="row">
                                 <div class="col-sm-3">
-    								<a class="btn btn-primary" href="/Projects/@proj.ProjectID">View Details</a>
+    								<a class="btn btn-primary" asp-action="Project" asp-route-id="@proj.ProjectID">View Details</a>
                                 </div>
                                 <div class="col-sm-3 col-sm-offset-6">
-    								<a class="btn btn-default" href="/Projects/@proj.ProjectID" style="float: right;">View Builds</a>
+    								<a class="btn btn-default" style="float: right;" asp-action="ProjectBuilds" asp-route-id="@proj.ProjectID">View Builds</a>
                                 </div>
                             </div>
                         </div>
