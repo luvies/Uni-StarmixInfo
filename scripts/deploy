@@ -1,9 +1,9 @@
 #! /bin/bash
 echo Saving image to tar...
-# docker save -o ../bin/images/starmixinfo.tar starmixinfo:latest
+docker save -o ../bin/images/starmixinfo.tar starmixinfo:latest
 echo Done!
 echo Uploading tar to server...
-# scp -C ../bin/images/starmixinfo.tar ubuntu@starmix.devsprime.com:/var/dev/docker/images/
+scp -C ../bin/images/starmixinfo.tar ubuntu@starmix.devsprime.com:/var/dev/docker/images/
 echo Uploaded!
 echo Loading tar as image and restarting server...
 ssh ubuntu@starmix.devsprime.com 'sudo /var/dev/scripts/starmixinfo-deploy'
