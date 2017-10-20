@@ -1,5 +1,6 @@
 #! /bin/bash
 CONTAINER="webserver"
+WEBSERVER_VOLUMES="/var/dev/docker/volumes/starmixinfo"
 
 echo Saving image to tar...
 docker save -o ../bin/images/starmixinfo.tar starmixinfo:latest
@@ -16,7 +17,8 @@ ssh ubuntu@starmix.devsprime.com '\
         --name webserver \
         --network webserver_nw \
         --restart always \
-        -v /var/dev/logs:/app/Logs \
+        -v $WEBSERVER_VOLUMES/logs:/app/Logs \
+        -v $WEBSERVER_VOLUMES/uploads:/app/wwwroot/uploads \
         -d starmixinfo:latest; \
     sudo docker image prune -f'
 echo Done! Webserver has been re-deployed
