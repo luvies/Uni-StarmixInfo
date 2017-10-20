@@ -1,0 +1,20 @@
+#! /bin/bash
+if [[ $EUID -ne 0 ]]; then
+   echo This script must be run as root
+   exit 1
+fi
+
+CONTAINER="wserv_starmixinfo"
+WEBSERVER_VOLUMES="/var/dev/docker/volumes/starmixinfo"
+
+docker load -i /var/dev/docker/images/starmixinfo.tar
+docker container stop $CONTAINER
+docker container rm $CONTAINER
+docker container run \
+    --name $CONTAINER \
+    --network webserver_nw \
+    --restart always \
+    -v $WEBSERVER_VOLUMES/logs:/app/Logs \
+    -v $WEBSERVER_VOLUMES/uploads:/app/wwwroot/uploads \
+    -d starmixinfo:latest
+docker image prune -f
