@@ -6,7 +6,9 @@ from tkinter import *
 from tkinter import ttk
 
 
-LOG_LINE_FORMAT_ITEMS = ["@t", "@i", "@m", "@x", "@l", "0"]
+LOG_LINE_FORMAT_ITEMS = ["@t", "@i", "@m", "@x", "@l"]
+LOG_LEVEL_KEY = "@l"
+DEFAULT_LEVEL = "Information"
 END_OF_LOG_TEXT = "> end of log "
 USE_BLANK_LINES = True
 BLANK_LINES = 8
@@ -24,6 +26,11 @@ class App(ttk.Frame):
         # init widgets
         self.init_widgets()
 
+    def get_level(self, line):
+        if LOG_LEVEL_KEY not in line:
+            return DEFAULT_LEVEL
+        return line[LOG_LEVEL_KEY]
+
     def init_widgets(self):
         # init bade widgets
         self.tree = ttk.Treeview(self, selectmode=NONE)
@@ -38,13 +45,14 @@ class App(ttk.Frame):
             ln = ln.strip()
             if ln != "":
                 line = json.loads(ln)
+                lvl = self.get_level(line)
                 id = self.tree.insert("", "end", text="[{:%Y-%m-%d %H:%M:%S}] [{}] {}".format(
                     dateutil.parser.parse(line[LOG_LINE_FORMAT_ITEMS[0]]),
                     line[LOG_LINE_FORMAT_ITEMS[1]].upper(),
                     line[LOG_LINE_FORMAT_ITEMS[2]]
-                ))
+                ), tags=(lvl, ))
+                self.tree.insert(id, 0, text=">>  {}  <<".format(lvl))
                 if LOG_LINE_FORMAT_ITEMS[3] in line:
-                    self.tree.item(id, tags=("exc", ))
                     exlines = line[LOG_LINE_FORMAT_ITEMS[3]].split("\n")
                     ex = self.tree.insert(id, "end", text="Exception: {}".format(
                         exlines[0]
@@ -64,8 +72,12 @@ class App(ttk.Frame):
                 self.tree.insert("", "end")
             self.tree.insert("", "end", text="-" * NUM_HSPLITS)
 
-        # set exception logs to be light red
-        self.tree.tag_configure("exc", background="light coral")
+        # config message colours
+        self.tree.tag_configure("Error", background="light coral")
+        self.tree.tag_configure("Warning", background="orange")
+        self.tree.tag_configure("Information", background="white")
+        self.tree.tag_configure("Debug", background="azure2")
+        self.tree.tag_configure("Trace", background="azure3")
 
         self.update()
         self.tree.yview_moveto(1)

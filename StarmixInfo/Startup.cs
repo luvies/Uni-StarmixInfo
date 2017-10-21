@@ -10,9 +10,13 @@ namespace StarmixInfo
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        const string _LogImportantFormat = "==== {0:l} ====";
+        readonly ILogger<Startup> _logger;
+
+        public Startup(IConfiguration configuration, ILogger<Startup> logger)
         {
             Configuration = configuration;
+            _logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -37,7 +41,7 @@ namespace StarmixInfo
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IApplicationLifetime appLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -48,18 +52,27 @@ namespace StarmixInfo
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            // log hits
-            app.Use((context, next) =>
+            // set up logging
+            appLifetime.ApplicationStarted.Register(OnStartup); // on startup
+            app.Use((context, next) => // on hit
             {
-                logger.LogInformation("Request {0} originated from {1}:{2}", context.Connection.Id,
-                                      context.Connection.RemoteIpAddress, context.Connection.RemotePort);
+                _logger.LogInformation("Request {0:l} originated from {1:l}:{2}", context.Connection.Id,
+                                      context.Connection.RemoteIpAddress.ToString(), context.Connection.RemotePort);
                 return next();
             });
+            appLifetime.ApplicationStopping.Register(OnStopping); // on stopping
+            appLifetime.ApplicationStopped.Register(OnStopped); // on stopped
 
             // setup app
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
             app.UseStaticFiles(new StaticFileOptions { ServeUnknownFileTypes = true });
             app.UseMvcWithDefaultRoute();
         }
+
+        void OnStartup() => _logger.LogInformation(_LogImportantFormat, "Server Fully Started");
+
+        void OnStopping() => _logger.LogInformation(_LogImportantFormat, "Server Stopping");
+
+        void OnStopped() => _logger.LogInformation(_LogImportantFormat, "Server Stopped, Exit Imminent");
     }
 }

@@ -32,8 +32,10 @@ namespace StarmixInfo
                            config.AddJsonFile($"Secrets/appsecrets.{context.HostingEnvironment.EnvironmentName}.json",
                                               false);
                        })
-                   .ConfigureLogging(loggerFactory =>
-                                     loggerFactory.AddFile(Path.Combine(LogFolder, LogFile), isJson: true))
+                   .ConfigureLogging((context, loggerFactory) =>
+                                     loggerFactory.AddFile(Path.Combine(LogFolder, LogFile), 
+                                                           context.HostingEnvironment.IsDevelopment() ? LogLevel.Debug : LogLevel.Information,
+                                                           isJson: true))
                    .Build();
     }
 }

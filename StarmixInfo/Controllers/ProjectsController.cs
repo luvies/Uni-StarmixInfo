@@ -68,7 +68,7 @@ namespace StarmixInfo.Controllers
                 total += allBuilds[platform].Count;
             }
             stopwatch.Stop();
-            _logger.LogInformation("Found {0} builds in total in {1} seconds", total, stopwatch.Elapsed.TotalMilliseconds / 1000);
+            _logger.LogInformation("Found {0} builds in total in {1:N4} seconds", total, stopwatch.Elapsed.TotalMilliseconds / 1000);
             return View("ProjectBuilds", (proj, allBuilds));
         }
     }
