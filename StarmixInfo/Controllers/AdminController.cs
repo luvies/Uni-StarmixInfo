@@ -43,7 +43,7 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             // status codes:
@@ -73,23 +73,23 @@ namespace StarmixInfo.Controllers
         [HttpPost("Login")]
         public IActionResult Login(string password)
         {
-            _logger.LogInformation("user attempted to login");
+            _logger.LogInformation("User attempted to login");
             if (!_adminLogon.HasSetPassword)
             {
-                _logger.LogInformation("admin password not set, redirecting...");
+                _logger.LogInformation("Admin password not set, redirecting...");
                 return RedirectToAction(nameof(SetPassword));
             }
             if (_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user logged in, redirecting...");
+                _logger.LogInformation("User logged in, redirecting...");
                 return RedirectToAction(nameof(Index));
             }
             if (_adminLogon.AttemptLogin(password))
             {
-                _logger.LogInformation("login attempt successful");
+                _logger.LogInformation("Login attempt successful");
                 return RedirectToAction(nameof(Index));
             }
-            _logger.LogInformation("login attempt failed");
+            _logger.LogInformation("Login attempt failed");
             return RedirectToAction(nameof(Login), new { failed = true });
         }
 
@@ -98,7 +98,7 @@ namespace StarmixInfo.Controllers
         {
             if (_adminLogon.HasSetPassword)
             {
-                _logger.LogInformation("password already set, redirecting...");
+                _logger.LogInformation("Password already set, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             return View();
@@ -109,12 +109,12 @@ namespace StarmixInfo.Controllers
         {
             if (_adminLogon.HasSetPassword)
             {
-                _logger.LogInformation("password already set, redirecting...");
+                _logger.LogInformation("Password already set, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             _adminLogon.SetPassword(password);
             _adminLogon.AttemptLogin(password);
-            _logger.LogInformation("user set the admin password");
+            _logger.LogInformation("User set the admin password");
             return RedirectToAction(nameof(Login));
         }
 
@@ -128,11 +128,11 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             _configHelper.CurrentProject = id;
-            _logger.LogInformation("current project set to {0}", id);
+            _logger.LogInformation("Current project set to {0}", id);
             return RedirectToAction(nameof(Index), new { status = 7 });
         }
 
@@ -142,7 +142,7 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             Project proj = _dbContext.Projects.SingleOrDefault(q => q.ProjectID == id);
@@ -163,7 +163,7 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             if (SetProjectInfo(id,
@@ -174,7 +174,7 @@ namespace StarmixInfo.Controllers
                                unityprojid,
                                gdocfolderid))
             {
-                _logger.LogInformation("project {0} updated", id);
+                _logger.LogInformation("Project {0} updated", id);
                 return RedirectToAction(nameof(Index), new { status = 3 });
             }
             return RedirectToAction(nameof(Index), new { status = 4 });
@@ -186,7 +186,7 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             return View("Project");
@@ -203,7 +203,7 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             if (SetProjectInfo(null,
@@ -214,7 +214,7 @@ namespace StarmixInfo.Controllers
                                unityprojid,
                                gdocfolderid))
             {
-                _logger.LogInformation("new project created");
+                _logger.LogInformation("New project created");
                 return RedirectToAction(nameof(Index), new { status = 1 });
             }
             return RedirectToAction(nameof(Index), new { status = 2 });
@@ -226,7 +226,7 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             try
@@ -293,14 +293,14 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             List<UploadedFile> files = new List<UploadedFile>();
             foreach (var file in _hostEnvrionment.WebRootFileProvider.GetDirectoryContents(_FileUploadPath))
             {
                 UploadedFile ufile = new UploadedFile(file.Name, file.LastModified.DateTime, _FileUploadPath);
-                _logger.LogDebug("found file {0} (uri: {1}, uploaded: {2})", file.PhysicalPath, ufile.UriPath, ufile.UploadDate);
+                _logger.LogDebug("Found file {0} (uri: {1}, uploaded: {2})", file.PhysicalPath, ufile.UriPath, ufile.UploadDate);
                 files.Add(ufile);
             }
             // status codes:
@@ -315,7 +315,7 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             foreach (var formFile in files)
@@ -326,7 +326,7 @@ namespace StarmixInfo.Controllers
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await formFile.CopyToAsync(stream);
-                        _logger.LogInformation("saved file {0} to {1}", formFile.FileName, filePath);
+                        _logger.LogInformation("Saved file {0} to {1}", formFile.FileName, filePath);
                     }
                 }
             }
@@ -338,14 +338,14 @@ namespace StarmixInfo.Controllers
         {
             if (!_adminLogon.LoggedIn)
             {
-                _logger.LogInformation("user not logged in, redirecting...");
+                _logger.LogInformation("User not logged in, redirecting...");
                 return RedirectToAction(nameof(Login));
             }
             IFileInfo file = _hostEnvrionment.WebRootFileProvider.GetFileInfo(Path.Combine(_FileUploadPath, filename));
             if (file.Exists)
             {
                 System.IO.File.Delete(file.PhysicalPath);
-                _logger.LogInformation("deleted file {0}", file.PhysicalPath);
+                _logger.LogInformation("Deleted file {0}", file.PhysicalPath);
                 return RedirectToAction(nameof(Media), new { status = 3 });
             }
             return RedirectToAction(nameof(Media), new { status = 4 });

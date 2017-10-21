@@ -51,7 +51,8 @@ namespace StarmixInfo
             // log hits
             app.Use((context, next) =>
             {
-                logger.LogInformation("hit from {0}", context.Connection.RemoteIpAddress);
+                logger.LogInformation("Request {0} originated from {1}:{2}", context.Connection.Id,
+                                      context.Connection.RemoteIpAddress, context.Connection.RemotePort);
                 return next();
             });
 
