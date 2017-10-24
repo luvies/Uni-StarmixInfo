@@ -1,35 +1,51 @@
-#! /bin/sh
+#! /bin/bash
+if [[ $(uname) != "Darwin" && $EUID -ne 0 ]]; then
+   echo This script must be run as root
+   exit 1
+fi
+
 IMAGE="starmix-dev-db-img"
 CONTAINER="starmix-dev-db"
 
-if [ $1 == "build" ]; then
+if [[ "$1" == "build" ]]; then
     echo Building dev DB docker image...
     docker build -t $IMAGE ../db/
     docker image prune -f
     echo Built the dev DB image
-elif [ $1 == "init" ]; then
+elif [[ "$1" == "init" ]]; then
     echo Container ID:
     docker run --name $CONTAINER -p 3316:3306 -d $IMAGE
     echo Container $CONTAINER is now initialised and running
-elif [ $1 == "up" ]; then
+elif [[ "$1" == "up" ]]; then
     echo Container name:
     docker start $CONTAINER
     echo Container is now up
-elif [ $1 == "down" ]; then
+elif [[ "$1" == "down" ]]; then
     echo Container name:
     docker stop $CONTAINER
     echo Container is now down
-elif [ $1 == "clean" ]; then
+elif [[ "$1" == "clean" ]]; then
     echo Container name:
     docker container rm $CONTAINER
     echo Container has been deleted
-elif [ $1 == "info" ]; then
+elif [[ "$1" == "info" ]]; then
     docker container stats --no-stream $CONTAINER
-elif [ $1 == "rebuild-init" ]; then
-    echo ==== Beginning full build \& init cycle ====
+elif [[ "$1" == "rebuild-init" ]]; then
+    echo "==== Beginning full build & init cycle ===="
     ./$0 down
     ./$0 clean
     ./$0 build
     ./$0 init
-    echo ==== Completed build \& init ====
+    echo "==== Completed build \& init ===="
+else
+    echo Control Dev DB Script
+    echo
+    echo Commands:
+    echo -e "\tbuild\t\tBuilds the DB image using the Dockerfile in /db/"
+    echo -e "\tinit\t\tStarts up a new DB container using the image created in 'build'"
+    echo -e "\tup\t\tStarts the current container"
+    echo -e "\tdown\t\tStops the current container"
+    echo -e "\tclean\t\tRemoves the old container"
+    echo -e "\tinfo\t\tDisplays info about the current container"
+    echo -e "\trebuild-init\tRuns the following commands in order: down -> clean -> build -> init"
 fi

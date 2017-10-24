@@ -1,0 +1,31 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "Dev DB Rebuild & init",
+            "type": "shell",
+            "command": "(cd ${cwd}/scripts && ./control-dev-db rebuild-init)",
+            "problemMatcher": []
+        },
+        {
+            "taskName": "Dev DB Up",
+            "type": "shell",
+            "command": "(cd ${cwd}/scripts && ./control-dev-db up)",
+            "problemMatcher": []
+        },
+        {
+            "taskName": "Dev DB Down",
+            "type": "shell",
+            "command": "(cd ${cwd}/scripts && ./control-dev-db down)",
+            "problemMatcher": []
+        },
+        {
+            "taskName": "Dev DB Info",
+            "type": "shell",
+            "command": "(cd ${cwd}/scripts && ./control-dev-db info)",
+            "problemMatcher": []
+        }
+    ]
+}
