@@ -4,27 +4,39 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "Dev DB Rebuild & init",
+            "taskName": "build",
             "type": "shell",
-            "command": "(cd ${cwd}/scripts && ./control-dev-db rebuild-init)",
+            "command": "dotnet restore ${workspaceRoot}/StarmixInfo && dotnet build -c Debug ${workspaceRoot}/StarmixInfo",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ]
+        },
+        {
+            "taskName": "dev db rebuild & init",
+            "type": "shell",
+            "command": "(cd ${workspaceRoot}/scripts && ./control-dev-db rebuild-init)",
             "problemMatcher": []
         },
         {
-            "taskName": "Dev DB Up",
+            "taskName": "dev db up",
             "type": "shell",
-            "command": "(cd ${cwd}/scripts && ./control-dev-db up)",
+            "command": "(cd ${workspaceRoot}/scripts && ./control-dev-db up)",
             "problemMatcher": []
         },
         {
-            "taskName": "Dev DB Down",
+            "taskName": "dev db down",
             "type": "shell",
-            "command": "(cd ${cwd}/scripts && ./control-dev-db down)",
+            "command": "(cd ${workspaceRoot}/scripts && ./control-dev-db down)",
             "problemMatcher": []
         },
         {
-            "taskName": "Dev DB Info",
+            "taskName": "dev db info",
             "type": "shell",
-            "command": "(cd ${cwd}/scripts && ./control-dev-db info)",
+            "command": "(cd ${workspaceRoot}/scripts && ./control-dev-db info)",
             "problemMatcher": []
         }
     ]
