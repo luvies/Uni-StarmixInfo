@@ -4,11 +4,11 @@
 }
 
 .navbar-inverse a {
-    color: black !important;
+    color: white !important;
 }
 
 .navbar-inverse {
-    background-color: lightskyblue;
+    background-color: #2A0200;
 }
 
 .navbar-icon {
@@ -21,6 +21,15 @@
     height: 100%;
 }
 
+/*custom font*/
+@font-face{
+    font-family: 'lcd_solidregular';
+    src: url('fonts/lcd_solid-webfont.woff2') format('woff2'),
+         url('fonts/lcd_solid-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -30,6 +39,7 @@
 }
 
 .footer-items {
+    font-family: "lcd_solidregular";
     list-style-type: none;
     margin: 0;
     padding: 0;
