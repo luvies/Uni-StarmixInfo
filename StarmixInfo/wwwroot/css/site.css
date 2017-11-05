@@ -53,6 +53,7 @@ body {
 .render-body {
     min-height: 100%;
     margin: 0 auto -20px;
+    padding-bottom: 40px;
 }
 
 .render-body .container {
