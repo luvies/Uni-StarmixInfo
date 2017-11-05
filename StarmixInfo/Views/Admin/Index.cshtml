@@ -38,48 +38,46 @@ status codes:
             break;
     }
 }
-<div class="col-sm-10"> <!--wrapper for centering objects!-->
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="panel-group">
-                @foreach (var proj in Model.Item2) {
-                    <div class="panel @(proj.ProjectID == Model.Item3 ? "panel-success" : "panel-default")"> @* add current project highlight *@
-                        <div class="panel-heading">
-                            <h3>@proj.Name</h3>
-                            <p>@proj.ShortDesc</p>
-                        </div>
-                        <div class="panel-body">
-                            <div class="container-fluid">
-                                @Html.Partial("_ProjectLongDesc", proj.LongDesc)
-                                <div class="row">
-                                    <div class="col-sm-4 col-sm-offset-8">
-                                        <form class="admin-proj-btn" method="post" onsubmit="return confirm('Are you sure you want to delete this project?')"
-                                                asp-action="Delete" asp-route-id="@proj.ProjectID">
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel-group">
+            @foreach (var proj in Model.Item2) {
+                <div class="panel @(proj.ProjectID == Model.Item3 ? "panel-success" : "panel-default")"> @* add current project highlight *@
+                    <div class="panel-heading">
+                        <h3>@proj.Name</h3>
+                        <p>@proj.ShortDesc</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+                            @Html.Partial("_ProjectLongDesc", proj.LongDesc)
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-offset-8">
+                                    <form class="admin-proj-btn" method="post" onsubmit="return confirm('Are you sure you want to delete this project?')"
+                                            asp-action="Delete" asp-route-id="@proj.ProjectID">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                    <form class="admin-proj-btn" method="get" asp-action="Edit" asp-route-id="@proj.ProjectID">
+                                        <button type="submit" class="btn btn-primary">Edit</button>
+                                    </form>
+                                    @if (proj.ProjectID != Model.Item3) {
+                                        <form class="admin-proj-btn" method="get" asp-action="SetCurrent" asp-route-id="@proj.ProjectID">
+                                            <button type="submit" class="btn btn-warning">Set As Current Project</button>
                                         </form>
-                                        <form class="admin-proj-btn" method="get" asp-action="Edit" asp-route-id="@proj.ProjectID">
-                                            <button type="submit" class="btn btn-primary">Edit</button>
-                                        </form>
-                                        @if (proj.ProjectID != Model.Item3) {
-                                            <form class="admin-proj-btn" method="get" asp-action="SetCurrent" asp-route-id="@proj.ProjectID">
-                                                <button type="submit" class="btn btn-warning">Set As Current Project</button>
-                                            </form>
-                                        }
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <a class="btn btn-default" asp-action="Media">Media</a>
-        </div>
-        <div class="col-sm-offset-6 col-sm-3">
-            <a class="btn btn-success" style="float: right;" asp-action="New">New Project</a>
-        </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <a class="btn btn-default" asp-action="Media">Media</a>
+    </div>
+    <div class="col-sm-offset-6 col-sm-3">
+        <a class="btn btn-success" style="float: right;" asp-action="New">New Project</a>
     </div>
 </div>

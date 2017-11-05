@@ -1,6 +1,11 @@
-﻿body {
+﻿html {
+    height: 100%;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    height: 100%;
 }
 
 .navbar-inverse a {
@@ -13,25 +18,15 @@
     margin: 0;
 }
 
+.navbar-icon {
+    padding: 3px !important;
+    padding-left: 0px !important;
+}
 
 .navbar-icon img {
-    height: 75%;
-    margin: 15%;
+    height: 100%;
 }
 
-.dropdown-toggle{
-    background-image: url("/images/project-button.png");
-    height:40px;
-    width: 181px;
-    margin-top: 4px;
-    padding-top: 0;
-    background-color: #2a0200;
-    
-}
-
-.dropdown-menu {
-    background-image:src("/imgages/dropdown-empty.png");
-}
 .navbar li a {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -39,40 +34,10 @@
     padding-left: 5px;
 }
 
-#central-hall-container div{
-    width: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-#central-hall-img {
-    width: 100%;
-}
-
-.container {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-}
-
-/*this shows that everywhere we have a col-sm-10 it will be centrally aligned
-this is good for cross device viewing as we will always have a col-1 on both sides when resizing window*/
-
-/*we might want to offload it into a separate class or ID as this is slightly restrictive if we want to use normal col-10*/
-/*Used mainly as a wrapper (i.e. whenever we want a centered content with dynamic margins on the sides we just put the
-whole block of rows/cols in a single <div class="row-col-10">...</div> */
-.col-sm-10{
-    float: none;
-    margin: 0 auto;
-    padding-top: 2%;
-}
-
-
-/*custom font*/
-@font-face{
+/* custom font */
+@font-face {
     font-family: 'lcd_solidregular';
-    src: url('fonts/lcd_solid-webfont.woff2') format('woff2'),
-         url('fonts/lcd_solid-webfont.woff') format('woff');
+    src: url('fonts/lcd_solid-webfont.woff2') format('woff2'), url('fonts/lcd_solid-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -80,15 +45,34 @@ whole block of rows/cols in a single <div class="row-col-10">...</div> */
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-   /* background-image: url("/images/64x64-planks.png");
-    background-repeat: repeat;*/
     padding-left: 15px;
     padding-right: 15px;
+    height: 100%;
 }
-.footer-center{
-    float: none;
+
+.render-body {
+    min-height: 100%;
+    margin: 0 auto -20px;
+}
+
+.render-body .container {
+    padding-top: 20px;
+}
+
+.footer-container {
+    background: #2A0200;
+    padding-top: 10px;
+}
+
+.footer {
+    width: fit-content;
     margin: 0 auto;
 }
+
+.footer footer {
+    height: 20px;
+}
+
 .footer-items {
     font-family: "lcd_solidregular";
     color: white;
@@ -97,17 +81,7 @@ whole block of rows/cols in a single <div class="row-col-10">...</div> */
     padding: 0;
 }
 
-.footer-styling{
-    display: block;
-    width: 100%;
-    background-color: #2A0200;
-    position: fixed;
-    bottom: 0;
-
-}
-
 .footer-items li {
-    
     float: left;
     padding-left: 10px;
     padding-right: 10px;

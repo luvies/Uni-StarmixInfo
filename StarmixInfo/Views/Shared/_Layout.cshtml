@@ -16,10 +16,11 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    @RenderSection("Styles", required: false)
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid" >
+        <div class="container" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -39,14 +40,9 @@
                         </a>
                     </li>
                     <li>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="ProjectsBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ></button>
-                            <div class="dropdown-menu" aria-labelledby="ProjectsBtn">
-                                <a class="dropdown-item btn-block" asp-area="" asp-controller="Home" asp-action="Index">Assessment 1 and 2</a>
-                                <a class="dropdown-item disabled btn-block" asp-area="" asp-controller="Home" asp-action="Index">Assessment 3</a>
-                                <a class="dropdown-item disabled btn-block" asp-area="" asp-controller="Home" asp-action="Index">Assessment 4</a>
-                            </div>
-                        </div>
+                        <a asp-area="" asp-controller="Projects" asp-action="Index">
+                            <img src="/images/project-button.png">
+                        </a>
                     </li>
                     <li>
                         <a asp-area="" asp-controller="Home" asp-action="About">
@@ -57,18 +53,22 @@
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <div class="footer-styling row">
-        <div class="col-sm-2 footer-center">
-            <footer>
-                <ul class="footer-items">
-                        <li><p>&copy; 2017 - Starmix</p></li>
-                        <li><a href="/Admin">Admin</a></li>
-                </ul>
-            </footer>
-        </div>
+    <div class="body-content">
+        <div class="render-body">
+		    @RenderSection("PreBody", required: false)
+			<div class="container render-body-main">
+                @RenderBody()
+			</div>
+		</div>
+        <div class="row footer-container">
+			<div class="footer">
+                <footer>
+                    <ul class="footer-items">
+                            <li><p>&copy; 2017 - Starmix</p></li>
+                            <li><a href="/Admin">Admin</a></li>
+                    </ul>
+                </footer>
+			</div>
         </div>
     </div>
 

@@ -2,39 +2,52 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<div class="row" id="central-hall-container">
-    <div class="col-sm-12">
-        <img src="/images/central-hall-pixelated.jpg" id="central-hall-img">
+
+@section Styles {
+    <style>
+        .central-hall {
+            width: calc(100% + 30px);
+            margin: 0;
+	        margin-left: -15px;
+            margin-right: -15px;
+	        margin-bottom: -20px;
+            padding: 0;
+        }
+
+        .central-hall img {
+            width: 100%;
+        }
+    </style>
+}
+
+@section PreBody {
+    <div class="central-hall">
+        <img src="/images/central-hall-pixelated.jpg">
     </div>
-</div>
+}
+
 @if (Model == null) {
-    <div class="col-sm-10">
     <div class="row">
 	    <div class="col-sm-12">
             <h1>No project set as current</h1>
 		</div>
     </div>
-    </div>
 }
 else {
-    <div class="col-sm-10">
-    <div class="row"><!--wrapper for centering objects!-->
+    <div class="row">
 	    <div class="col-sm-12">
             <h1>@Model.Name</h1>
     	    <p>@Model.ShortDesc</p>
 		</div>
     </div>
     <hr />
-    
     @Html.Partial("_ProjectLongDesc", Model.LongDesc)
     <div class="row" style="margin-top: 20px;">
-        
         <div class="col-sm-3">
             <a class="btn btn-primary" asp-controller="Projects" asp-action="Project" asp-route-id="@Model.ProjectID">View Details</a>
 	    </div>
-	    <div class="col-sm-3 col-sm-offset-3">
+	    <div class="col-sm-3" style="float: right;">
             <a class="btn btn-default" style="float: right;" asp-controller="Projects" asp-action="ProjectBuilds" asp-route-id="@Model.ProjectID">View Builds</a>
 	    </div>
-    </div>
     </div>
 }
