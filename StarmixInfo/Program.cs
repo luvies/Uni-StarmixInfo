@@ -33,8 +33,7 @@ namespace StarmixInfo
                                               false);
                        })
                    .ConfigureLogging((context, loggerFactory) =>
-                                     loggerFactory.AddFile(Path.Combine(LogFolder, LogFile), 
-                                                           context.HostingEnvironment.IsDevelopment() ? LogLevel.Debug : LogLevel.Information,
+                                     loggerFactory.AddFile(Path.Combine(LogFolder, LogFile),
                                                            isJson: true))
                    .Build();
     }
