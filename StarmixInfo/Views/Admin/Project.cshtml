@@ -2,40 +2,41 @@
 @{
     ViewData["Title"] = (Model == null ? "New" : "Edit") + " Project";
 }
-
-<div class="row">
-	<div class="col-sm-12">
-        <form method="post" asp-action="@(Model != null ? "Edit" : "New")" asp-route-id="@(Model?.ProjectID.ToString() ?? "")">
-            <div class="form-group">
-                <lable for="name">Project Name: </lable>
-    			<input type="text" class="form-control" name="name" id="name" value="@(Model?.Name ?? "")">
-    	    </div>
-            <div class="form-group">
-                <lable for="shortdesc">Short Description: </lable>
-                <input type="text" class="form-control" name="shortdesc" id="shortdesc" value="@(Model?.ShortDesc ?? "")">
-            </div>
-            <div class="form-group">
-                <lable for="longdesc">Long Description (HTML code contained in @("<div class=\"container-fluid\"></div>") tags): </lable>
-    			<textarea type="text" class="form-control" name="longdesc" id="longdesc" rows="7">@(Model?.LongDesc ?? "")</textarea>
-            </div>
-            <div class="form-group">
-                <lable for="unityorgid">Unity Organisation ID: </lable>
-                <input type="text" class="form-control" name="unityorgid" id="unityorgid" value="@(Model?.UnityOrgID ?? "")">
-            </div>
-            <div class="form-group">
-                <lable for="unityprojid">Unity Project ID: </lable>
-                <input type="text" class="form-control" name="unityprojid" id="unityprojid" value="@(Model?.UnityProjectID ?? "")">
-            </div>
-            <div class="form-group">
-                <lable for="gdocfolderid">Google Drive Folder ID: </lable>
-                <input type="text" class="form-control" name="gdocfolderid" id="gdocfolderid" value="@(Model?.GDocFolderID ?? "")">
-            </div>
-    		@if (Model == null) {
-                <button type="submit" class="btn btn-success" style="float: right;">Create</button>
-    		}
-    		else {
-    		    <button type="submit" class="btn btn-default" style="float: right;">Save</button>
-    		}
-    	</form>
+<div class="col-sm-10">
+    <div class="row">
+        <div class="col-sm-12">
+            <form method="post" asp-action="@(Model != null ? "Edit" : "New")" asp-route-id="@(Model?.ProjectID.ToString() ?? "")">
+                <div class="form-group">
+                    <lable for="name">Project Name: </lable>
+                    <input type="text" class="form-control" name="name" id="name" value="@(Model?.Name ?? "")">
+                </div>
+                <div class="form-group">
+                    <lable for="shortdesc">Short Description: </lable>
+                    <input type="text" class="form-control" name="shortdesc" id="shortdesc" value="@(Model?.ShortDesc ?? "")">
+                </div>
+                <div class="form-group">
+                    <lable for="longdesc">Long Description (HTML code contained in @("<div class=\"container-fluid\"></div>") tags): </lable>
+                    <textarea type="text" class="form-control" name="longdesc" id="longdesc" rows="7">@(Model?.LongDesc ?? "")</textarea>
+                </div>
+                <div class="form-group">
+                    <lable for="unityorgid">Unity Organisation ID: </lable>
+                    <input type="text" class="form-control" name="unityorgid" id="unityorgid" value="@(Model?.UnityOrgID ?? "")">
+                </div>
+                <div class="form-group">
+                    <lable for="unityprojid">Unity Project ID: </lable>
+                    <input type="text" class="form-control" name="unityprojid" id="unityprojid" value="@(Model?.UnityProjectID ?? "")">
+                </div>
+                <div class="form-group">
+                    <lable for="gdocfolderid">Google Drive Folder ID: </lable>
+                    <input type="text" class="form-control" name="gdocfolderid" id="gdocfolderid" value="@(Model?.GDocFolderID ?? "")">
+                </div>
+                @if (Model == null) {
+                    <button type="submit" class="btn btn-success" style="float: right;">Create</button>
+                }
+                else {
+                    <button type="submit" class="btn btn-default" style="float: right;">Save</button>
+                }
+            </form>
+        </div>
     </div>
 </div>

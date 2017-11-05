@@ -19,7 +19,7 @@
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -30,13 +30,29 @@
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand navbar-icon">
                     <img src="/images/logo.svg">
 				</a>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Starmix</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Projects" asp-action="Index">Projects</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Index">
+                            <img src="/images/home-button.png">
+                        </a>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="ProjectsBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ></button>
+                            <div class="dropdown-menu" aria-labelledby="ProjectsBtn">
+                                <a class="dropdown-item btn-block" asp-area="" asp-controller="Home" asp-action="Index">Assessment 1 and 2</a>
+                                <a class="dropdown-item disabled btn-block" asp-area="" asp-controller="Home" asp-action="Index">Assessment 3</a>
+                                <a class="dropdown-item disabled btn-block" asp-area="" asp-controller="Home" asp-action="Index">Assessment 4</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="About">
+                            <img src="/images/about-button.png">
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -44,12 +60,14 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-			<ul class="footer-items">
-					<li><p>&copy; 2017 - Starmix</p></li>
-					<li><a href="/Admin">Admin</a></li>
-			</ul>
-        </footer>
+        <div class="col-lg-2">
+            <footer>
+                <ul class="footer-items">
+                        <li><p>&copy; 2017 - Starmix</p></li>
+                        <li><a href="/Admin">Admin</a></li>
+                </ul>
+            </footer>
+        </div>
     </div>
 
     <environment include="Development">
