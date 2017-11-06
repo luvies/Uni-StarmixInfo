@@ -14,8 +14,13 @@ body {
 h1 {
    margin-top: 10px;
    font-family: 'lcd_solidregular';
-
 }
+
+h3 {
+    margin-top: 10px;
+    font-family: 'lcd_solidregular';
+ }
+
 hr {
     border-color: #5e1e1c;
 }
@@ -35,6 +40,16 @@ hr {
 
 .btn-default:hover {
     background-color: #ffd59b;
+}
+
+.panel-success {
+    border-color: #b48b50;
+}
+
+.panel-success > .panel-heading {
+    background-color: #ccac7e;
+    color: black;
+    border-color: #b48b50;
 }
 
 .navbar-inverse a {
