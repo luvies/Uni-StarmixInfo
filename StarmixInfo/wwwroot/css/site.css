@@ -6,6 +6,35 @@ body {
     padding-top: 50px;
     padding-bottom: 20px;
     height: 100%;
+    background-image: url("/images/64x64-stone-tiles.png");
+    background-repeat: repeat;
+    font-family: 'Ubuntu';
+}
+
+h1 {
+   margin-top: 10px;
+   font-family: 'lcd_solidregular';
+
+}
+hr {
+    border-color: #5e1e1c;
+}
+
+.btn-primary {
+    background-color: #502400;
+    border-color: #502400;
+}
+
+.btn-primary:hover {
+    background-color: #271200;
+}
+
+.btn-default {
+    background-color: #b48b50;
+}
+
+.btn-default:hover {
+    background-color: #ffd59b;
 }
 
 .navbar-inverse a {
@@ -58,6 +87,16 @@ body {
 
 .render-body .container {
     padding-top: 20px;
+}
+
+.body-content-wrap {
+    margin-top:20px;
+    padding: 10px;
+    padding-top: 10px;
+    background-color: rgb(255, 233, 202);
+    border: 2px solid #2a0200;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black;
 }
 
 .footer-container {
