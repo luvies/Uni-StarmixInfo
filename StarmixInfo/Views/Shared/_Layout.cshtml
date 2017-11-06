@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - StarmixInfo</title>
-	<link rel="icon" type="image/png" href="/images/icon.png">
+    <link rel="icon" type="image/png" href="/images/icon.png">
     <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
 
     <environment include="Development">
@@ -17,6 +17,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
     @RenderSection("Styles", required: false)
 </head>
 <body>
@@ -31,7 +32,7 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand navbar-icon">
                     <img src="/images/logo.svg">
-				</a>
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -56,22 +57,22 @@
     </nav>
     <div class="body-content">
         <div class="render-body">
-		    @RenderSection("PreBody", required: false)
-			<div class="container">
+            @RenderSection("PreBody", required: false)
+        	<div class="container">
                 <div class="body-content-wrap">
                     @RenderBody()
                 </div>
-			</div>
-		</div>
+            </div>
+        </div>
         <div class="row footer-container">
-			<div class="footer">
+            <div class="footer">
                 <footer>
                     <ul class="footer-items">
                         <li><p>&copy; 2017 - Starmix</p></li>
                         <li><a href="/Admin">Admin</a></li>
                     </ul>
                 </footer>
-			</div>
+            </div>
         </div>
     </div>
 

@@ -6,6 +6,27 @@
     const string buildTimeFormat = "yyyy-MM-dd HH:mm:ss zzz";
 }
 
+@section Styles {
+    <style>
+        .proj-build-item {
+            margin-top: 20px;
+        }
+        
+        .proj-build-item p {
+            margin-top: 5px;
+        }
+
+        .proj-build-item-panel {
+            margin-bottom: 0px;
+        }
+
+        .proj-build-item-panel-heading {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+}
+
 @if (Model.Item2 == null) {
     <div class="row">
         <div class="col-sm-12">
