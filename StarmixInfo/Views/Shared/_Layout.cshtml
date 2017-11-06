@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - StarmixInfo</title>
-	<link rel="icon" type="image/png" href="/images/icon.png">
+    <link rel="icon" type="image/png" href="/images/icon.png">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -16,10 +17,12 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+    @RenderSection("Styles", required: false)
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+        <div class="container" >
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -29,27 +32,48 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand navbar-icon">
                     <img src="/images/logo.svg">
-				</a>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Starmix</a>
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Projects" asp-action="Index">Projects</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="Index">
+                            <img src="/images/buttons/home.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Projects" asp-action="Index">
+                            <img src="/images/buttons/project.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="About">
+                            <img src="/images/buttons/about.png">
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-			<ul class="footer-items">
-					<li><p>&copy; 2017 - Starmix</p></li>
-					<li><a href="/Admin">Admin</a></li>
-			</ul>
-        </footer>
+    <div class="body-content">
+        <div class="render-body">
+            @RenderSection("PreBody", required: false)
+        	<div class="container">
+                <div class="body-content-wrap">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <div class="row footer-container">
+            <div class="footer">
+                <footer>
+                    <ul class="footer-items">
+                        <li><p>&copy; 2017 - Starmix</p></li>
+                        <li><a href="/Admin">Admin</a></li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
     </div>
 
     <environment include="Development">

@@ -1,35 +1,162 @@
-﻿body {
+﻿/* general tag styling */
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    font-family: 'Ubuntu';
     padding-top: 50px;
     padding-bottom: 20px;
+    background-image: url('/images/64x64-stone-tiles.png');
+    background-repeat: repeat;
+}
+
+h1 {
+    margin-top: 10px;
+    font-family: 'lcd_solidregular';
+}
+
+h2 {
+    margin-top: 10px;
+    font-family: 'lcd_solidregular';
+}
+
+h3 {
+    margin-top: 10px;
+    font-family: 'lcd_solidregular';
+}
+
+hr {
+    border-color: #5e1e1c;
+}
+
+/* bootstrap re-styling */
+.btn-primary {
+    background-color: #502400;
+    border-color: #502400;
+}
+
+.btn-primary:hover {
+    background-color: #271200;
+    border-color: #271200;
+}
+
+.btn-default {
+    background-color: #b48b50;
+    border-color: #b48b50;
+}
+
+.btn-default:hover {
+    background-color: #ffd59b;
+    border-color: #ffd59b;
+}
+
+.panel-success {
+    border-color: #b48b50;
+}
+
+.panel-success > .panel-heading {
+    background-color: #ccac7e;
+    color: black;
+    border-color: #b48b50;
+}
+
+.panel-default {
+    border-color: #d3ba9d;
+}
+
+.panel-default > .panel-heading {
+    background-color: #f5dec8;
+    color: black;
+    border-color: #d3ba9d;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    background-color: #fff4e7;
 }
 
 .navbar-inverse a {
-    color: black !important;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar-inverse {
-    background-color: lightskyblue;
+    background-color: #2A0200;
+    margin: 0;
 }
 
 .navbar-icon {
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 10px;
+    padding: 3px !important;
+    padding-left: 0px !important;
 }
 
 .navbar-icon img {
     height: 100%;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 20px;
+.navbar li a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
+/* custom font */
+@font-face {
+    font-family: 'lcd_solidregular';
+    src: url('fonts/lcd_solid-webfont.woff') format('woff'), url('fonts/lcd_solid-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* content body styling */
+.body-content {
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;
+}
+
+.render-body {
+    min-height: 100%;
+    margin: 0 auto -20px;
+    padding-bottom: 40px;
+}
+
+    .render-body > .container {
+        padding-top: 20px;
+    }
+
+.body-content-wrap {
+    margin-top: 20px;
+    padding: 10px;
+    padding-top: 10px;
+    background-color: rgb(255, 233, 202);
+    border: 2px solid #2a0200;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black;
+}
+
+/* footer styling */
+.footer-container {
+    background: #2A0200;
+    padding-top: 10px;
+}
+
+.footer {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+    .footer footer {
+        height: 20px;
+    }
+
 .footer-items {
+    font-family: "lcd_solidregular";
+    color: white;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -49,36 +176,7 @@
     }
 }
 
-/* project edit items */
-.admin-proj-btn {
-    display: inline;
-    float: right;
-    margin-left: 25px;
-    margin-right: -15px;
-}
-
 /* project build page panel styling */
-.proj-build-item {
-    margin-top: 20px;
-}
-
-.proj-build-item p {
-    margin-top: 5px;
-}
-
-.proj-build-item-panel {
-    margin-bottom: 0px;
-}
-
-.proj-build-item-panel-heading {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
 .proj-long-desc-col {
     padding: 0;
-}
-
-.about-member {
-    text-align: center;
 }
