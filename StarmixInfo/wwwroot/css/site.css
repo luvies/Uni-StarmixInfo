@@ -90,7 +90,8 @@ hr {
 
 .navbar-icon {
     padding: 3px !important;
-    padding-left: 0px !important;
+    padding-left: 10px !important;
+    padding-right: 0 !important;
 }
 
 .navbar-icon img {
@@ -101,6 +102,10 @@ hr {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-right: 5px;
+    padding-left: 5px;
+}
+
+.navbar-nav {
     padding-left: 5px;
 }
 
