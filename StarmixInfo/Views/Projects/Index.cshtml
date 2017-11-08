@@ -16,10 +16,10 @@
                         <div class="container-fluid">
                             @Html.Partial("_ProjectLongDesc", proj.LongDesc)
                             <div class="row">
-                                <div class="col-sm-3">
+                                <div class="col-xs-3">
     								<a class="btn btn-primary" asp-action="Project" asp-route-id="@proj.ProjectID">View Details</a>
                                 </div>
-                                <div class="col-sm-3 col-sm-offset-6">
+                                <div class="col-xs-3 col-xs-offset-6">
     								<a class="btn btn-default" style="float: right;" asp-action="ProjectBuilds" asp-route-id="@proj.ProjectID">View Builds</a>
                                 </div>
                             </div>
