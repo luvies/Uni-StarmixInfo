@@ -30,24 +30,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand navbar-icon">
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand navbar-icon">
                     <img src="/images/logo.svg">
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <a asp-controller="Home" asp-action="Index">
                             <img src="/images/buttons/home.png">
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Projects" asp-action="Index">
+                        <a asp-controller="Projects" asp-action="Index">
                             <img src="/images/buttons/project.png">
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="About">
+                        <a asp-controller="Home" asp-action="About">
                             <img src="/images/buttons/about.png">
                         </a>
                     </li>
@@ -69,7 +69,7 @@
                 <footer>
                     <ul class="footer-items">
                         <li><p>&copy; 2017 - Starmix</p></li>
-                        <li><a href="/Admin">Admin</a></li>
+                        <li><a asp-controller="Admin" asp-action="Index">Admin</a></li>
                     </ul>
                 </footer>
             </div>
