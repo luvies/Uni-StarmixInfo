@@ -125,9 +125,9 @@ hr {
     padding-bottom: 40px;
 }
 
-    .render-body > .container {
-        padding-top: 20px;
-    }
+.render-body > .container {
+    padding-top: 20px;
+}
 
 .body-content-wrap {
     margin-top: 20px;
@@ -143,6 +143,8 @@ hr {
 .footer-container {
     background: #2A0200;
     padding-top: 10px;
+    margin-left: -5px;
+    margin-right: -5px;
 }
 
 .footer {
@@ -150,9 +152,9 @@ hr {
     margin: 0 auto;
 }
 
-    .footer footer {
-        height: 20px;
-    }
+.footer footer {
+    height: 20px;
+}
 
 .footer-items {
     font-family: "lcd_solidregular";
