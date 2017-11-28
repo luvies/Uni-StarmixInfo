@@ -77,7 +77,7 @@ namespace StarmixInfo.Services
             foreach (BuildStatus status in Enum.GetValues(typeof(BuildStatus)))
                 if (GetDescString(status) == buildStatus)
                     return status;
-            throw new KeyNotFoundException();
+            throw new KeyNotFoundException(string.Format("status: {0}", buildStatus));
         }
 
         public void Dispose()
