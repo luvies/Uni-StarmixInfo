@@ -88,7 +88,7 @@ else {
                                                             <div class="row">
                         						                @if (build.BuildStatus == BuildStatus.Success) {
                                                                     <div class="col-sm-8">
-                                                                        <p>Build completed on @build.Created.ToString(buildTimeFormat) (UTC)</p>
+                                                                        <p>Build completed on @build.Finished.ToString(buildTimeFormat) (UTC)</p>
                                                                     </div>
                             						                <div class="col-sm-4">
                                                                         <a class="btn btn-default" href="@build.DownloadLink" style="float: right;">Download</a>

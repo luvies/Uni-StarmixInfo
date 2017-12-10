@@ -55,14 +55,7 @@ namespace StarmixInfo.Controllers
             int total = 0;
             System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
             stopwatch.Stop();
-            foreach (var platform in new[] {
-                Platform.Windows64,
-                Platform.Windows32,
-                Platform.OSX,
-                Platform.Linux64,
-                Platform.Linux32,
-                Platform.Android
-            })
+            foreach (Platform platform in Enum.GetValues(typeof(Platform)))
             {
                 allBuilds.Add(platform, await _unityApiHelper.GetBuilds(proj.UnityOrgID, proj.UnityProjectID, platform));
                 total += allBuilds[platform].Count;

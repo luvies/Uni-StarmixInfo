@@ -11,15 +11,15 @@ namespace StarmixInfo.Models.Unity
         Windows32,
         [Description("standalonewindows64")]
         Windows64,
-        [Description("ios")]
-        iOS,
+        //[Description("ios")]
+        //iOS,
         [Description("android")]
         Android,
-        [Description("standalonelinux")]
-        Linux,
-        [Description("standalonelinux64")]
-        Linux32,
         [Description("standalonelinuxuniversal")]
+        LinuxUniversal,
+        [Description("standalonelinux")]
+        Linux32,
+        [Description("standalonelinux64")]
         Linux64
     }
 }
