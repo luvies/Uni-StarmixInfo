@@ -43,6 +43,7 @@ hr {
 }
 
 .btn-default {
+    color: #222;
     background-color: #b48b50;
     border-color: #b48b50;
 }
@@ -174,6 +175,10 @@ hr {
     float: left;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.footer-items a {
+    color: #4898dc;
 }
 
 /* project build page panel styling */
