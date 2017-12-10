@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "taskName": "build",
+            "label": "build",
             "type": "shell",
             "command": "dotnet restore ${workspaceRoot}/StarmixInfo && dotnet build -c Debug ${workspaceRoot}/StarmixInfo",
             "group": {
@@ -16,25 +16,25 @@
             ]
         },
         {
-            "taskName": "dev db rebuild & init",
+            "label": "dev db rebuild & init",
             "type": "shell",
             "command": "(cd ${workspaceRoot}/scripts && ./control-dev-db rebuild-init)",
             "problemMatcher": []
         },
         {
-            "taskName": "dev db up",
+            "label": "dev db up",
             "type": "shell",
             "command": "(cd ${workspaceRoot}/scripts && ./control-dev-db up)",
             "problemMatcher": []
         },
         {
-            "taskName": "dev db down",
+            "label": "dev db down",
             "type": "shell",
             "command": "(cd ${workspaceRoot}/scripts && ./control-dev-db down)",
             "problemMatcher": []
         },
         {
-            "taskName": "dev db info",
+            "label": "dev db info",
             "type": "shell",
             "command": "(cd ${workspaceRoot}/scripts && ./control-dev-db info)",
             "problemMatcher": []
