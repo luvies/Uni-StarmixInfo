@@ -25,10 +25,12 @@ namespace StarmixInfo.Services
             AuthToken = authToken;
             _logger = logger;
 
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri(ApiEndpoint);
+            _httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(ApiEndpoint)
+            };
             _httpClient.DefaultRequestHeaders.Accept.Clear();
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("applicatin/json"));
+            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", AuthToken);
         }
 
@@ -49,7 +51,7 @@ namespace StarmixInfo.Services
                 {
                     build = new BuildModel()
                     {
-                        BuildStatus = Services.UnityApiHelper.GetBuildStatusFromString((string)item.buildStatus),
+                        BuildStatus = GetBuildStatusFromString((string)item.buildStatus),
                         Created = DateTime.Parse((string)item.created)
                     };
                     if (build.BuildStatus == BuildStatus.Success)
