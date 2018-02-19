@@ -43,11 +43,6 @@ else {
     <hr />
     @Html.Partial("_ProjectLongDesc", Model.LongDesc)
     <div class="row" style="margin-top: 20px;">
-        <div class="col-xs-3">
-            <a class="btn btn-primary" asp-controller="Projects" asp-action="Project" asp-route-id="@Model.ProjectID">View Details</a>
-        </div>
-        <div class="col-xs-3  col-xs-offset-6">
-            <a class="btn btn-default" style="float: right;" asp-controller="Projects" asp-action="ProjectBuilds" asp-route-id="@Model.ProjectID">View Builds</a>
-        </div>
+        @Html.Partial("_ProjectViewButtons", (Model, true))
     </div>
 }

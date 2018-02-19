@@ -1,0 +1,14 @@
+﻿@model ValueTuple<StarmixInfo.Models.Data.Project, bool>
+@* a helper partial to render the 'View Details' and 'View Builds' button
+ * if the bool given is false, then the 'View Details' button is not rendered *@
+
+@if (Model.Item2) {
+    <div class="col-xs-3">
+        <a class="btn btn-primary" asp-controller="Projects" asp-action="Project" asp-route-id="@Model.Item1.ProjectID">View Details</a>
+    </div>
+}
+@if (Model.Item1.UnityOrgID != "-" && Model.Item1.UnityProjectID != "-") {
+    <div class="col-xs-3 @(Model.Item2 ? "col-xs-offset-6" : "")">
+        <a class="btn btn-default" style="float: right;" asp-controller="Projects" asp-action="ProjectBuilds" asp-route-id="@Model.Item1.ProjectID">View Builds</a>
+    </div>
+}

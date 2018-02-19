@@ -27,12 +27,7 @@
                     <div class="panel-body">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-xs-3">
-    								<a class="btn btn-primary" asp-action="Project" asp-route-id="@proj.ProjectID">View Details</a>
-                                </div>
-                                <div class="col-xs-3 col-xs-offset-6">
-    								<a class="btn btn-default" style="float: right;" asp-action="ProjectBuilds" asp-route-id="@proj.ProjectID">View Builds</a>
-                                </div>
+                                @Html.Partial("_ProjectViewButtons", (proj, true))
                             </div>
                         </div>
                     </div>
