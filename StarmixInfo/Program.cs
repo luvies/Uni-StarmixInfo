@@ -28,9 +28,9 @@ namespace StarmixInfo
                        (context, config) =>
                        {
                            config.AddJsonFile("Secrets/appsecrets.json",
-                                              false);
+                                              optional: false);
                            config.AddJsonFile($"Secrets/appsecrets.{context.HostingEnvironment.EnvironmentName}.json",
-                                              false);
+                                              optional: true);
                        })
                    .ConfigureLogging((context, loggerFactory) =>
                                      loggerFactory.AddFile(Path.Combine(LogFolder, LogFile),
