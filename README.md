@@ -16,6 +16,8 @@ If the Unity organisation or project ID contains the string `-`, then the builds
 
 The admin page is locked behind a simple login system that hands out a session token to the user that is logged in. It only stores a single token, meaning that the database will not get too full and it stops a user agent from staying logged in permanently (which could be a security risk). The password is set via a 'Set Password' form that is shown if the password hash in the database doesn't exist. While this presents a small security risk in setting up, since we don't plan on huge visiter numbers, and we don't plan on setting up more than once, so this is considered a non-issue.
 
+The site is currently hosted at <https://starmix.devsprime.com>.
+
 ## Dev Database
 In order to test the server properly, I have set up a system where a MySQL database can be created and managed through a docker container. This allows the database to be isolated from the rest of the parent system, and allow for finer control over the database. The SQL folder is for all the SQL that is needed to set up the database, and also modify it in future (meaning if we need to change the tables etc. we can test the SQL using this system). I've set it up so that if changes are made, then rebuilding the database will cause it to be initialised using the base script, then modified using the following, ensuring that the database is exactly the same.
 
