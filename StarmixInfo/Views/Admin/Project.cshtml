@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <lable for="longdesc">Long Description (HTML code contained in @("<div class=\"container-fluid\"></div>") tags): </lable>
-                <textarea type="text" class="form-control" name="longdesc" id="longdesc" rows="7">@(Model?.LongDesc ?? "")</textarea>
+                <textarea type="text" class="form-control" style="max-width: 100%; min-width: 100%;" name="longdesc" id="longdesc" rows="7">@(Model?.LongDesc ?? "")</textarea>
             </div>
             <div class="form-group">
                 <lable for="unityorgid">Unity Organisation ID: </lable>
