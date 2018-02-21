@@ -1,5 +1,5 @@
 # Starmix Info
-The website for out Unversity year 2 SEPR module.
+The website for our Unversity year 2 SEPR module.
 
 The site is an ASP.NET Core site that uses a MySQL database for storing project data. It is designed to be used over the course of the whole project, meaning that it is designed to allow the adding, updating and removing of projects without having to update the codebase, as this allows us to iterate site changes much quicker.
 

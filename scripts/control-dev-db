@@ -36,7 +36,7 @@ elif [[ "$1" == "rebuild-init" ]]; then
     ./$0 clean
     ./$0 build
     ./$0 init
-    echo "==== Completed build \& init ===="
+    echo "==== Completed build & init ===="
 else
     echo Control Dev DB Script
     echo
