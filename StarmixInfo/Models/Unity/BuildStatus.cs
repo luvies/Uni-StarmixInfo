@@ -18,6 +18,8 @@ namespace StarmixInfo.Models.Unity
         [Description("cancelled")]
         Cancelled,
         [Description("upload")]
-        Upload
+        Upload,
+        [Description("unknown")]
+        Unknown
     }
 }
