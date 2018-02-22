@@ -37,7 +37,7 @@ namespace StarmixInfo.Controllers
             return View(GetErrorObject());
         }
 
-        [HttpGet("/Error/{code}")]
+        [HttpGet("/Home/Error/{code}")]
         public IActionResult Error(string code)
         {
             return View(GetErrorObject(code));

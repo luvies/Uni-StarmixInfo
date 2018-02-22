@@ -64,7 +64,7 @@ namespace StarmixInfo
             appLifetime.ApplicationStopped.Register(OnStopped); // on stopped
 
             // setup app
-            app.UseStatusCodePagesWithReExecute("/Error/{0}");
+            app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
             app.UseStaticFiles(new StaticFileOptions { ServeUnknownFileTypes = true });
             app.UseMvcWithDefaultRoute();
         }
