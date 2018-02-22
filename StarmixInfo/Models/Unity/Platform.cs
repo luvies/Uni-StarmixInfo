@@ -5,21 +5,19 @@ namespace StarmixInfo.Models.Unity
 {
     public enum Platform
     {
-        [Description("standaloneosxintel64")]
-        OSX,
-        [Description("standalonewindows")]
-        Windows32,
         [Description("standalonewindows64")]
         Windows64,
-        //[Description("ios")]
-        //iOS,
-        [Description("android")]
-        Android,
-        [Description("standalonelinuxuniversal")]
-        LinuxUniversal,
+        [Description("standalonewindows")]
+        Windows32,
+        [Description("standaloneosxintel64")]
+        OSX,
+        [Description("standalonelinux64")]
+        Linux64,
         [Description("standalonelinux")]
         Linux32,
-        [Description("standalonelinux64")]
-        Linux64
+        [Description("standalonelinuxuniversal")]
+        LinuxUniversal,
+        [Description("android")]
+        Android
     }
 }
