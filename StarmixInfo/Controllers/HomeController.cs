@@ -34,13 +34,19 @@ namespace StarmixInfo.Controllers
 
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(GetErrorObject());
         }
 
         [HttpGet("/Error/{code}")]
         public IActionResult Error(string code)
         {
-            return View((object)code);
+            return View(GetErrorObject(code));
         }
+
+        ErrorViewModel GetErrorObject(string code = null) => new ErrorViewModel
+        {
+            Code = code,
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+        };
     }
 }

@@ -1,9 +1,9 @@
-﻿@model string
+﻿@model ErrorViewModel
 @{
     ViewData["Title"] = "Error";
 }
 
-@if (Model == "404") {
+@if (Model.Code == "404") {
     <div class="row">
         <div class="col-sm-7">
             <h1>Hmmmmmmmm... that doesn't seem to be a page</h1>
@@ -13,13 +13,21 @@
             <img src="/images/thinking.jpg"/>
 	    </div>
     </div>
-    <div class="row">
-        <div class="col-sm-7">
-            <p style="font-weight: 100">Have you tried turning it off and on again?</p>
-	    </div>
-    </div>
+    if (Model.RequestId != null) {
+        <div class="row" style="margin-top: 80px;">
+            <div class="col-sm-12">
+                <p>Request ID:</p>
+                <p style="font-family: monospace; margin-left: 40px;">@Model.RequestId</p>
+            </div>
+        </div>
+    }
 }
 else {
-    <h1>Error</h1>
-    <h2>Status code: @Model</h2>
+    <h2>@Model.Message</h2>
+    <p>An error occurred while processing your request.</p>
+    if (Model.RequestId != null)
+    {
+        <p>Request ID:</p>
+        <p style="font-family: monospace; margin-left: 40px;">@Model.RequestId</p>
+    }
 }
