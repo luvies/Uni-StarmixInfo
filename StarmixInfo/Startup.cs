@@ -56,14 +56,28 @@ namespace StarmixInfo
             appLifetime.ApplicationStarted.Register(OnStartup); // on startup
             app.Use((context, next) => // on hit
             {
-                _logger.LogInformation("Request {0:l} originated from {1:l}:{2}", context.Connection.Id,
-                                      context.Connection.RemoteIpAddress.ToString(), context.Connection.RemotePort);
+                string addr = context.Connection.RemoteIpAddress.ToString();
+                string port = context.Connection.RemotePort.ToString();
+                // if proxy headers exist, use those instead
+                if (context.Request.Headers.TryGetValue("X-Real-IP", out Microsoft.Extensions.Primitives.StringValues addrValues))
+                {
+                    addr = addrValues.ToString();
+                    if (context.Request.Headers.TryGetValue("X-Real-Port", out Microsoft.Extensions.Primitives.StringValues portValues))
+                        port = portValues.ToString();
+                    else
+                        port = "????";
+                }
+                _logger.LogInformation("Request {0:l} originated from [{1:l}]:{2:l}", context.Connection.Id, addr, port);
                 return next();
             });
             appLifetime.ApplicationStopping.Register(OnStopping); // on stopping
             appLifetime.ApplicationStopped.Register(OnStopped); // on stopped
 
             // setup app
+            app.UseForwardedHeaders(new ForwardedHeadersOptions()
+            {
+                ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.All
+            });
             app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
             app.UseStaticFiles(new StaticFileOptions { ServeUnknownFileTypes = true });
             app.UseMvcWithDefaultRoute();
