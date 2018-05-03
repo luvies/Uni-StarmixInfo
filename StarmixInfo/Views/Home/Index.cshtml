@@ -4,10 +4,11 @@
 }
 
 @section Styles {
+    <link rel="stylesheet" href="~/game/TemplateData/style.css">
     <style>
         #central-hall {
             width: calc(100% + 10px);
-            height: 250px;
+            height: 510px;
             margin: 0;
             margin-left: -5px;
             margin-right: -5px;
@@ -19,11 +20,40 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
+        #central-hall.hide-game {
+            height: 200px;
+        }
+
+        .hide-game .webgl-content {
+            display: none;
+        }
     </style>
 }
 
+@section Scripts {
+    <script src="~/game/TemplateData/UnityProgress.js"></script>
+    <script src="~/game/Build/UnityLoader.js"></script>
+    <script>
+        if ($(window).width() >= 768) {
+            var gameInstance = UnityLoader.instantiate("gameContainer", "/game/Build/webGL.json", {onProgress: UnityProgress});
+        } else {
+            $('#central-hall').addClass('hide-game');
+        }
+    </script>
+}
+
 @section PreBody {
-    <div id="central-hall"></div>
+    <div id="central-hall">
+        <div class="webgl-content">
+            <div id="gameContainer" style="width: 700px; height: 450px"></div>
+            <div class="footer">
+                <div class="webgl-logo"></div>
+                <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+                <div class="title">University Domination</div>
+            </div>
+        </div>
+    </div>
 }
 
 @if (Model == null) {
