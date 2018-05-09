@@ -2,6 +2,8 @@
 "companyName": "DefaultCompany",
 "productName": "University Domination",
 "dataUrl": "webGL.data.unityweb",
+"wasmCodeUrl": "webGL.wasm.code.unityweb",
+"wasmFrameworkUrl": "webGL.wasm.framework.unityweb",
 "asmCodeUrl": "webGL.asm.code.unityweb",
 "asmMemoryUrl": "webGL.asm.memory.unityweb",
 "asmFrameworkUrl": "webGL.asm.framework.unityweb",
