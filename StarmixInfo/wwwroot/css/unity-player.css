@@ -22,7 +22,7 @@
 }
 
 .webgl-content .logo {
-    background: url('progressLogo.Light.png') no-repeat center / contain;
+    background: url('/game/TemplateData/progressLogo.Light.png') no-repeat center / contain;
     width: 154px;
     height: 130px;
 }
@@ -34,7 +34,7 @@
 }
 
 .webgl-content .progress .empty {
-    background: url('progressEmpty.Light.png') no-repeat right / cover;
+    background: url('/game/TemplateData/progressEmpty.Light.png') no-repeat right / cover;
     float: right;
     width: 100%;
     height: 100%;
@@ -42,7 +42,7 @@
 }
 
 .webgl-content .progress .full {
-    background: url('progressFull.Light.png') no-repeat left / cover;
+    background: url('/game/TemplateData/progressFull.Light.png') no-repeat left / cover;
     float: left;
     width: 0%;
     height: 100%;
@@ -50,15 +50,15 @@
 }
 
 .webgl-content .logo.Dark {
-    background-image: url('progressLogo.Dark.png');
+    background-image: url('/game/TemplateData/progressLogo.Dark.png');
 }
 
 .webgl-content .progress.Dark .empty {
-    background-image: url('progressEmpty.Dark.png');
+    background-image: url('/game/TemplateData/progressEmpty.Dark.png');
 }
 
 .webgl-content .progress.Dark .full {
-    background-image: url('progressFull.Dark.png');
+    background-image: url('/game/TemplateData/progressFull.Dark.png');
 }
 
 .webgl-content .footer {
@@ -81,7 +81,7 @@
 }
 
 .webgl-content .footer .webgl-logo {
-    background-image: url('webgl-logo.png');
+    background-image: url('/game/TemplateData/webgl-logo.png');
     width: 204px;
     float: left;
 }
@@ -92,7 +92,7 @@
 }
 
 .webgl-content .footer .fullscreen {
-    background-image: url('fullscreen.png');
+    background-image: url('/game/TemplateData/fullscreen.png');
     width: 38px;
     float: right;
 }
