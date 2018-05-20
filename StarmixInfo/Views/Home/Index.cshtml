@@ -34,22 +34,17 @@
 @section Scripts {
     <script src="~/game/TemplateData/UnityProgress.js"></script>
     <script src="~/game/Build/UnityLoader.js"></script>
-    <script>
-        if ($(window).width() >= 768) {
-            var gameInstance = UnityLoader.instantiate("gameContainer", "/game/Build/webGL.json", {onProgress: UnityProgress});
-        } else {
-            $('#central-hall').addClass('hide-game');
-        }
-    </script>
 }
 
 @section PreBody {
     <div id="central-hall">
         <div class="webgl-content">
-            <div id="gameContainer" style="width: 700px; height: 450px"></div>
+            <div id="gameContainer" style="width: 700px; height: 450px">
+                <button onclick="loadGame()">Click to start game...</button>
+            </div>
             <div class="footer">
                 <div class="webgl-logo"></div>
-                <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+                <div class="fullscreen" onclick="gameInstance && gameInstance.SetFullscreen(1)"></div>
                 <div class="title">University Domination</div>
             </div>
         </div>

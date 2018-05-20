@@ -96,3 +96,18 @@
     width: 38px;
     float: right;
 }
+
+#gameContainer {
+    background: rgb(35, 31, 32);
+}
+
+#gameContainer button {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    position: relative;
+    background: none;
+    font-size: x-large;
+    color: white;
+}
