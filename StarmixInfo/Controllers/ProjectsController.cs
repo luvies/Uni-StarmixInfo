@@ -42,7 +42,7 @@ namespace StarmixInfo.Controllers
 
         // GET: /<controller>/{id}/Builds
         [HttpGet("[controller]/{id}/Builds")]
-        async public Task<IActionResult> ProjectBuilds(int id)
+        public async Task<IActionResult> ProjectBuilds(int id)
         {
             _logger.LogInformation("Fetching builds from project {0}", id);
             Project proj = _dbContext.Projects.SingleOrDefault(q => q.ProjectID == id);
@@ -51,17 +51,15 @@ namespace StarmixInfo.Controllers
                 _logger.LogInformation("Project does not exist, redirecting...");
                 return View("ProjectBuilds", Tuple.Create<Project, Dictionary<Platform, List<BuildModel>>>(null, null));
             }
-            Dictionary<Platform, List<BuildModel>> allBuilds = new Dictionary<Platform, List<BuildModel>>();
-            int total = 0;
-            System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+            var stopwatch = new System.Diagnostics.Stopwatch();
+            stopwatch.Start();
+
+            Dictionary<Platform, List<BuildModel>> allBuilds = await _unityApiHelper.GetBuilds(proj.UnityOrgID, proj.UnityProjectID);
+
             stopwatch.Stop();
-            foreach (Platform platform in Enum.GetValues(typeof(Platform)))
-            {
-                allBuilds.Add(platform, await _unityApiHelper.GetBuilds(proj.UnityOrgID, proj.UnityProjectID, platform));
-                total += allBuilds[platform].Count;
-            }
-            stopwatch.Stop();
-            _logger.LogInformation("Found {0} builds in total in {1:N4} seconds", total, stopwatch.Elapsed.TotalMilliseconds / 1000);
+#if DEBUG
+            _logger.LogInformation("Found {0} builds in total in {1:N4} seconds", allBuilds.Values.SelectMany(b => b).Count(), stopwatch.Elapsed.TotalMilliseconds / 1000);
+#endif
             return View("ProjectBuilds", (proj, allBuilds));
         }
     }
