@@ -9,3 +9,5 @@ make clean
 make
 make stop || true
 make run
+cd ..
+rm -rf $DIR
