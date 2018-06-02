@@ -50,3 +50,7 @@ Thumbs.db
 
 # Auto generated files
 .vs/
+
+# allow archived files
+!archive/pages/wwwroot/css/site.min.css
+!archive/pages/wwwroot/js/site.min.js
