@@ -1,2 +1,2 @@
 # make archive folder ignored in language stats
-archive/* linguist-vendored
+archive/* linguist-detectable=false
