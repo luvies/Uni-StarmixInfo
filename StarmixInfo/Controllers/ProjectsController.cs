@@ -42,7 +42,7 @@ namespace StarmixInfo.Controllers
 
         // GET: /<controller>/{id}/Builds
         [HttpGet("[controller]/{id}/Builds")]
-        public async Task<IActionResult> ProjectBuilds(int id, [FromQuery]bool share = false)
+        public async Task<IActionResult> ProjectBuilds(int id, bool share = false)
         {
             _logger.LogInformation("Fetching builds from project {0}", id);
             Project proj = _dbContext.Projects.SingleOrDefault(q => q.ProjectID == id);
