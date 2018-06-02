@@ -12,7 +12,7 @@ docker container stop $CONTAINER
 docker container rm $CONTAINER
 docker container run \
     --name $CONTAINER \
-    --network webserver_nw \
+    --network nw_starmixinfo \
     --restart always \
     -v $WEBSERVER_VOLUMES/logs:/app/Logs \
     -v $WEBSERVER_VOLUMES/uploads:/app/wwwroot/uploads \
