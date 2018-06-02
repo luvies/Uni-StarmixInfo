@@ -9,6 +9,7 @@ build:
 run:
 	docker container run \
 		--name $(CONTAINER) \
+		--network webserver_nw \
 		--restart always \
 		-d $(IMAGE):latest
 	
