@@ -8,6 +8,6 @@ namespace StarmixInfo.Services
     public interface IUnityApiHelper : IDisposable
     {
         string AuthToken { get; }
-        Task<Dictionary<Platform, List<BuildModel>>> GetBuilds(string orgId, string projId);
+        Task<Dictionary<Platform, List<BuildModel>>> GetBuilds(string orgId, string projId, bool shareLinks = false);
     }
 }

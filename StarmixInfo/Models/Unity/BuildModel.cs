@@ -9,5 +9,7 @@ namespace StarmixInfo.Models.Unity
         public string DownloadLink { get; set; }
         public DateTime Created { get; set; }
         public DateTime Finished { get; set; }
+        public string BuildTargetId { get; set; }
+        public int BuildNumber { get; set; }
     }
 }

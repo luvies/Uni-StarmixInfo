@@ -42,7 +42,7 @@ namespace StarmixInfo.Controllers
 
         // GET: /<controller>/{id}/Builds
         [HttpGet("[controller]/{id}/Builds")]
-        public async Task<IActionResult> ProjectBuilds(int id)
+        public async Task<IActionResult> ProjectBuilds(int id, [FromQuery]bool share = false)
         {
             _logger.LogInformation("Fetching builds from project {0}", id);
             Project proj = _dbContext.Projects.SingleOrDefault(q => q.ProjectID == id);
@@ -54,7 +54,7 @@ namespace StarmixInfo.Controllers
             var stopwatch = new System.Diagnostics.Stopwatch();
             stopwatch.Start();
 
-            Dictionary<Platform, List<BuildModel>> allBuilds = await _unityApiHelper.GetBuilds(proj.UnityOrgID, proj.UnityProjectID);
+            Dictionary<Platform, List<BuildModel>> allBuilds = await _unityApiHelper.GetBuilds(proj.UnityOrgID, proj.UnityProjectID, share);
 
             stopwatch.Stop();
 #if DEBUG
