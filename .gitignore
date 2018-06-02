@@ -52,5 +52,5 @@ Thumbs.db
 .vs/
 
 # allow archived files
-!archive/pages/wwwroot/css/site.min.css
-!archive/pages/wwwroot/js/site.min.js
+!archive/**/site.min.css
+!archive/**/site.min.js

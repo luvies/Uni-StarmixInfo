@@ -9,3 +9,5 @@ COPY ./archive/pages/ /var/www/
 
 # copy normal content
 COPY ./StarmixInfo/wwwroot/ /var/www/
+COPY ./archive/excludes/site.min.css /var/www/css/
+COPY ./archive/excludes/site.min.js /var/www/js/
