@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#b48b50" />
+    <title>Project University Domination (Assessment 3) - StarmixInfo</title>
+    <link rel="icon" type="image/png" href="/images/icon.png">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <meta name="x-stylesheet-fallback-test" content="" class="sr-only" />
+    <script>
+        ! function (a, b, c, d) {
+            var e, f = document,
+                g = f.getElementsByTagName("SCRIPT"),
+                h = g[g.length - 1].previousElementSibling,
+                i = f.defaultView && f.defaultView.getComputedStyle ? f.defaultView.getComputedStyle(h) : h.currentStyle;
+            if (i && i[a] !== b)
+                for (e = 0; e < c.length; e++) f.write('<link href="' + c[e] + '" ' + d + "/>")
+        }("position", "absolute", ["\/lib\/bootstrap\/dist\/css\/bootstrap.min.css"], "rel=\u0022stylesheet\u0022 ");
+    </script>
+    <link rel="stylesheet" href="/css/site.min.css?v=FBi1kOBiztc6oib_6XW3RwLQDBoHK61aez_VY_-FiQk" />
+    <style>
+        .gdoc-embed {
+            overflow-x: scroll;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 700px) {
+            .gdoc-embed {
+                width: 95%;
+            }
+        }
+
+        .gdoc-embed iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navbar-icon" href="/">
+                    <img src="/images/logo.svg" alt="Starmix Logo">
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">
+                            <img src="/images/buttons/home.png" alt="Home">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Projects">
+                            <img src="/images/buttons/project.png" alt="Projects">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Home/About">
+                            <img src="/images/buttons/about.png" alt="About">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="body-content">
+        <div class="render-body">
+            <div class="container">
+                <div class="body-content-wrap">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1>University Domination (Assessment 3)</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <p>Near-final implementation</p>
+                        </div>
+                        <div class="col-xs-3 ">
+                            <a class="btn btn-default" style="float: right;" href="/Projects/3/Builds">View Builds</a>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-12 proj-long-desc-col">
+                            <div class="container-fluid">
+                                <!-- long description HTML raw injection -->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <blockquote class="blockquote blockquote">
+                                            <p class="mb-0">The main game? Yeah, it's good and all. But the minigame? That's a real spicy
+                                                meatball.
+                                            </p>
+                                            <footer class="blockquote-footer">Elon Musk</footer>
+                                        </blockquote>
+                                        <blockquote class="blockquote blockquote">
+                                            <p class="mb-0">yo that's finna woke</p>
+                                            <footer class="blockquote-footer">Jacksfilms</footer>
+                                        </blockquote>
+                                        <blockquote class="blockquote blockquote">
+                                            <p class="mb-0">The real reason we are protesting is that the minigame isn't widely availiable
+                                                for all universities.</p>
+                                            <footer class="blockquote-footer">UCU in their break from industrial action</footer>
+                                        </blockquote>
+                                        <blockquote class="blockquote blockquote">
+                                            <p class="mb-0">Starmix just took the Doom rights from me.</p>
+                                            <footer class="blockquote-footer">John Romero</footer>
+                                        </blockquote>
+                                        <p>All code can be found
+                                            <a href="https://github.com/Gorea235/Uni-UniversityDominationA3">at our GitHub repository</a>.
+                                        </p>
+                                        <p>Builds for all platforms can be found via the 'View Builds' button.</p>
+                                        <p>Click 'View Details' for documentation.</p>
+                                        <p style="font-weight: bold;">Notes</p>
+                                        <ul>
+                                            <li>In order to render the map in Unity's editor, ensure you have Blender installed</li>
+                                            <ul>
+                                                <li>This is due to the fact, that the models for the objects are .blend files
+                                                    and will not display if you do not have Blender
+                                                </li>
+                                            </ul>
+                                            <li>Upon scene change in Unity's editor, the scenes appear darker</li>
+                                            <ul>
+                                                <li>This is due to how
+                                                    <a href="https://answers.unity.com/questions/919940/applicationloadlevel-changes-lighting-for-some-rea.html">
+                                                        Unity handles baking of lights</a>
+                                                </li>
+                                            </ul>
+                                            <li style="font-style: italic; font-weight: bold;">Both of the above appear only in the editor and will not affect the build</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h3>Trailer</h3>
+                                        <style>
+                                            .trailer-embed {
+                                                width: 100%;
+                                                height: 200px;
+                                                border: 0;
+                                            }
+
+                                            @media (min-width: 768px) {
+                                                .trailer-embed {
+                                                    height: 391px;
+                                                }
+                                            }
+
+                                            @media (min-width: 992px) {
+                                                .trailer-embed {
+                                                    height: 515px;
+                                                }
+                                            }
+
+                                            @media (min-width: 1200px) {
+                                                .trailer-embed {
+                                                    height: 628px;
+                                                }
+                                            }
+                                        </style>
+                                        <iframe src="https://drive.google.com/file/d/1i1Mq4vbL7duOphIyS9LsE3-J_Yfl4A5z/preview" class="trailer-embed"></iframe>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h3>Benefits of Choosing Us</h3>
+                                        <ul>
+                                            <li>Architecture Assitance</li>
+                                            <ul>
+                                                <li>We are available to help with any questions concerning the structure of the
+                                                    game
+                                                </li>
+                                                <li>Architecture is cleanly explained</li>
+                                            </ul>
+                                            <li>Unity Assitance</li>
+                                            <ul>
+                                                <li>We are available to help with Unity wherever the documentation for it is
+                                                    lacking
+                                                </li>
+                                                <li>Unity has very good documentation already, so any issues can be Googled easily</li>
+                                            </ul>
+                                            <li>Documentation Support</li>
+                                            <ul>
+                                                <li>We are available to help with any documentation questions that you may have</li>
+                                            </ul>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h3>Game Overview</h3>
+                                        <ul>
+                                            <li>How did we do the saving &amp; loading? Mementos!</li>
+                                            <ul>
+                                                <li>"Snapshotting" the entire game state to a single object that can be stored
+                                                    and serialized easily</li>
+                                                <li>How will this help you?</li>
+                                                <ul>
+                                                    <li>Game state becomes flexible, if needed to be passed to different scenes</li>
+                                                    <li>If you have to expand or add classes that need to be saved (serialized),
+                                                        just add the fields or new serializable classes, and it'll work as
+                                                        before!
+                                                    </li>
+                                                    <li>Entirely compatible with Unity's MonoBehaviour system, no work around
+                                                        or bodging in order for it to work</li>
+                                                </ul>
+                                            </ul>
+                                            <li>Our unique minigame</li>
+                                            <ul>
+                                                <li>
+                                                    <a href="https://github.com/Gorea235/Uni-UniversityDominationA3/tree/master/Assets/Doom">Asset structure simple and clean with a README to help</a>
+                                                </li>
+                                                <li>Taking insiration from Doom, we've made a minigame that is fun and unique</li>
+                                                <ul>
+                                                    <li>Absolutely no gore!</li>
+                                                    <li>Designed with cartoon-ish comedic effect in mind (keeps within acceptable
+                                                        requirement limits)</li>
+                                                </ul>
+                                                <li>Flexible and configurable</li>
+                                                <ul>
+                                                    <li>The minigame is set up in such a way so that hard-coded values and actions
+                                                        are kept to a minimum, meaning that if something needs changing,
+                                                        you might not even have to edit any code at all!</li>
+                                                    <li>The current system can be altered and modified to suit future requirements
+                                                        without too much effort</li>
+                                                    <li>You can extend and change the minigame very easily</li>
+                                                    <ul>
+                                                        <li>For example, adding an entirely new enemy is a simple case of adding
+                                                            the model, creating a prefab, and adding the ‘EnemyController’
+                                                            script to it, and then changing the inspector values</li>
+                                                        <li>Adding enemies onto the map is a simple case of dropping them where
+                                                            you want, and then adding the new enemy to the enemy set it’s
+                                                            a part of, so the game can keep track of it</li>
+                                                    </ul>
+                                                </ul>
+                                                <li>Utilises Unity to its fullest</li>
+                                                <ul>
+                                                    <li>We've used Standard Assets where we can to reduce overall workload with
+                                                        development on the game, meaning that it will reduce your workload
+                                                        as well</li>
+                                                    <li>Minigame is set up to work with Unity's pipeline as well as possible
+                                                        to simplfy development</li>
+                                                </ul>
+                                                <li>Backup minigame for if you deem the current one too complicated</li>
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://github.com/Gorea235/Uni-UniversityDominationA3/tree/master/Assets/Backup">Described by a README to guide you through the differences</a>
+                                                    </li>
+                                                    <li>Fully tested to make sure it works with the current game</li>
+                                                    <li>Minimal changes in order to switch between</li>
+                                                    <li>Simple design and structure, meaning that if requirements do change drastically,
+                                                        overhauling the game is easy to do
+                                                    </li>
+                                                    <li style="font-weight: bold; font-style: italic;">Absolutely not required for the final game, it can be discarded safely
+                                                        if you do not want it</li>
+                                                </ul>
+                                                <li>Intergrated documentation with editor's intellisense</li>
+                                                <li>Full product brief functionality covered</li>
+                                            </ul>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- finished long description raw injection -->
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h3>Documentation</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 gdoc-embed">
+                            <iframe src="https://drive.google.com/embeddedfolderview?id=0B8mcPKjlcgILRXlmdXVnbDQ4QUk#list"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-container">
+            <div class="footer">
+                <footer>
+                    <ul class="footer-items">
+                        <li>
+                            <p>&copy; 2018 - Starmix</p>
+                        </li>
+                        <li>
+                            <a href="/Admin">Admin</a>
+                        </li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="></script>
+    <script>
+        (window.jQuery || document.write(
+            "\u003Cscript src=\u0022\/lib\/jquery\/dist\/jquery.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\u0022\u003E\u003C\/script\u003E"
+        ));
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js" crossorigin="anonymous" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"></script>
+    <script>
+        (window.jQuery && window.jQuery.fn && window.jQuery.fn.modal || document.write(
+            "\u003Cscript src=\u0022\/lib\/bootstrap\/dist\/js\/bootstrap.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\u0022\u003E\u003C\/script\u003E"
+        ));
+    </script>
+    <script src="/js/site.min.js?v=3dLjWPckds8YLVx8ltZxU2qsN2ljrzEbIDMLPHWpLC8"></script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#b48b50" />
+    <title>Home Page - StarmixInfo</title>
+    <link rel="icon" type="image/png" href="/images/icon.png">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <meta name="x-stylesheet-fallback-test" content="" class="sr-only" />
+    <script>
+        ! function (a, b, c, d) {
+            var e, f = document,
+                g = f.getElementsByTagName("SCRIPT"),
+                h = g[g.length - 1].previousElementSibling,
+                i = f.defaultView && f.defaultView.getComputedStyle ? f.defaultView.getComputedStyle(h) : h.currentStyle;
+            if (i && i[a] !== b)
+                for (e = 0; e < c.length; e++) f.write('<link href="' + c[e] + '" ' + d + "/>")
+        }("position", "absolute", ["\/lib\/bootstrap\/dist\/css\/bootstrap.min.css"], "rel=\u0022stylesheet\u0022 ");
+    </script>
+    <link rel="stylesheet" href="/css/site.min.css?v=FBi1kOBiztc6oib_6XW3RwLQDBoHK61aez_VY_-FiQk" />
+    <style>
+        #central-hall {
+            width: calc(100% + 10px);
+            height: 520px;
+            margin: 0;
+            margin-left: -5px;
+            margin-right: -5px;
+            margin-bottom: -20px;
+            padding: 0;
+            background-image: url("/images/central-hall-pixelated-with-sign.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #central-hall.hide-game {
+            height: 200px;
+        }
+
+        .hide-game .webgl-content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand navbar-icon" href="/">
+                    <img src="/images/logo.svg" alt="Starmix Logo">
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">
+                            <img src="/images/buttons/home.png" alt="Home">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Projects">
+                            <img src="/images/buttons/project.png" alt="Projects">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Home/About">
+                            <img src="/images/buttons/about.png" alt="About">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="body-content">
+        <div class="render-body">
+            <div id="central-hall">
+                <div class="webgl-content">
+                    <div id="gameContainer" style="width: 700px; height: 450px">
+                        <button onclick="loadGame()">Click to start game...</button>
+                    </div>
+                    <div class="footer">
+                        <div class="webgl-logo"></div>
+                        <div class="fullscreen" onclick="gameInstance && gameInstance.SetFullscreen(1)"></div>
+                        <div class="title">University Domination</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="body-content-wrap">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h1>University Domination (Assessment 4)</h1>
+                            <p>Final Implementation</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-sm-12 proj-long-desc-col">
+                            <div class="container-fluid">
+                                <!-- long description HTML raw injection -->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <blockquote class="blockquote blockquote">
+                                            <p class="mb-0">haha yes</p>
+                                            <footer class="blockquote-footer">Team Starmix</footer>
+                                        </blockquote>
+                                        <p>
+                                            All code can be found at our
+                                            <a href="https://github.com/Nicodaw/Uni-UniversityDominationA4">GitHub repository</a>. The README has more information and links about the project,
+                                            and the repository has all of our management resources as well.
+                                        </p>
+                                        <p>Builds for all platforms can be found via the 'View Builds' button.</p>
+                                        <p>Click 'View Details' for documentation.</p>
+                                    </div>
+                                </div>
+                                <!-- finished long description raw injection -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+
+                        <div class="col-xs-3">
+                            <a class="btn btn-primary" href="/Projects/4">View Details</a>
+                        </div>
+                        <div class="col-xs-3 col-xs-offset-6">
+                            <a class="btn btn-default" style="float: right;" href="/Projects/4/Builds">View Builds</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-container">
+            <div class="footer">
+                <footer>
+                    <ul class="footer-items">
+                        <li>
+                            <p>&copy; 2018 - Starmix</p>
+                        </li>
+                        <li>
+                            <a href="/Admin">Admin</a>
+                        </li>
+                    </ul>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js" crossorigin="anonymous" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="></script>
+    <script>
+        (window.jQuery || document.write(
+            "\u003Cscript src=\u0022\/lib\/jquery\/dist\/jquery.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=\u0022\u003E\u003C\/script\u003E"
+        ));
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js" crossorigin="anonymous" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"></script>
+    <script>
+        (window.jQuery && window.jQuery.fn && window.jQuery.fn.modal || document.write(
+            "\u003Cscript src=\u0022\/lib\/bootstrap\/dist\/js\/bootstrap.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\u0022\u003E\u003C\/script\u003E"
+        ));
+    </script>
+    <script src="/js/site.min.js?v=3dLjWPckds8YLVx8ltZxU2qsN2ljrzEbIDMLPHWpLC8"></script>
+    <script src="/game/TemplateData/UnityProgress.js"></script>
+    <script src="/game/Build/UnityLoader.js"></script>
+</body>
+
+</html>

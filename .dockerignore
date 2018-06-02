@@ -1,0 +1,10 @@
+.dockerignore
+**/.DS_Store
+.vs
+.vscode
+**/bin/
+**/content/
+**/obj/
+db/
+StarmixInfo/
+!StarmixInfo/wwwroot/

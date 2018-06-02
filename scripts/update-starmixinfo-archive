@@ -1,0 +1,11 @@
+#! /bin/bash
+REPO=https://github.com/Gorea235/Uni-StarmixInfo.git
+DIR=starmixinfo-tmp
+
+git clone $REPO $DIR
+cd $DIR
+git checkout
+make clean
+make
+make stop || true
+make run
