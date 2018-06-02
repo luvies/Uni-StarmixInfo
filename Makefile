@@ -9,7 +9,7 @@ build:
 run:
 	docker container run \
 		--name $(CONTAINER) \
-		--network webserver_nw \
+		--network nw_starmixinfo \
 		--restart always \
 		-d $(IMAGE):latest
 	
