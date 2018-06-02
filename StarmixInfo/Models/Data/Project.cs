@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace StarmixInfo.Models.Data
+﻿namespace StarmixInfo.Models.Data
 {
     public class Project
     {

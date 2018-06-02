@@ -5,13 +5,12 @@
     ViewData["Title"] = Model.Item1 != null ? Model.Item1.Name + " Builds" : "Unknown Project";
     const string buildTimeFormat = "yyyy-MM-dd HH:mm:ss zzz";
 }
-
 @section Styles {
     <style>
         .proj-build-item {
             margin-top: 20px;
         }
-        
+
         .proj-build-item p {
             margin-top: 5px;
         }
@@ -19,7 +18,7 @@
         .proj-build-item-panel {
             margin-bottom: 0px;
         }
-        
+
         .proj-build-item-panel-heading {
             padding-top: 10px;
             padding-bottom: 10px;
@@ -30,93 +29,104 @@
         }
     </style>
 }
-
-@if (Model.Item2 == null) {
+@if (Model.Item2 == null)
+{
     <div class="row">
         <div class="col-sm-12">
             <h1>Unable to find project</h1>
-	    </div>
+        </div>
     </div>
 }
-else {
+else
+{
     List<Platform> platforms = new List<Platform>(Model.Item2.Keys);
     bool activeTabSet = false;
     <div class="row">
         <div class="col-sm-12">
             <ul class="nav nav-tabs">
-                @foreach (var platform in platforms) {
+                @foreach (var platform in platforms)
+                {
                     <li class="@(!activeTabSet ? "active" : "")"><a data-toggle="tab" href="#@platform.ToString()">@platform.ToString()</a></li>
-			        activeTabSet = true;
+                    activeTabSet = true;
                 }
             </ul>
-		    <div class="tab-content">
-			    @{activeTabSet = false;}
-    		    @foreach (var platform in platforms) {
+            <div class="tab-content">
+                @{activeTabSet = false;}
+                @foreach (var platform in platforms)
+                {
                     <div id="@platform.ToString()" class="tab-pane @(!activeTabSet ? "fade in active" : "")">
                         <div class="container-fluid">
-                            @if (Model.Item2[platform] == null) {
+                            @if (Model.Item2[platform] == null)
+                            {
                                 <div class="row">
-						            <div class="col-sm-12">
+                                    <div class="col-sm-12">
                                         <h3>Unable to fetch builds</h3>
-						            </div>
-					            </div>
-					        }
-                            else {
-					            if (Model.Item2[platform].Count == 0) {
-					                <div class="row">
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                if (Model.Item2[platform].Count == 0)
+                                {
+                                    <div class="row">
                                         <div class="col-sm-12">
                                             <h3>No builds available</h3>
                                         </div>
                                     </div>
-					            }
-					            else {
-    				                string panelColour;
-                                    foreach (var build in Model.Item2[platform]) {
-    					                switch (build.BuildStatus) {
+                                }
+                                else
+                                {
+                                    string panelColour;
+                                    foreach (var build in Model.Item2[platform])
+                                    {
+                                        switch (build.BuildStatus)
+                                        {
                                             case BuildStatus.Success:
                                                 panelColour = "panel-success";
-    					                        break;
+                                                break;
                                             case BuildStatus.Failure:
-    					                    case BuildStatus.Cancelled:
+                                            case BuildStatus.Cancelled:
                                                 panelColour = "panel-danger";
                                                 break;
-    					                    default:
-    					                        panelColour = "panel-warning";
-    					                        break;
-    					                }
+                                            default:
+                                                panelColour = "panel-warning";
+                                                break;
+                                        }
                                         <div class="row proj-build-item">
                                             <div class="col-sm-12">
-    							                <div class="panel @panelColour proj-build-item-panel">
-    								                <div class="panel-heading proj-build-item-panel-heading">
-            							                <div class="container-fluid">
+                                                <div class="panel @panelColour proj-build-item-panel">
+                                                    <div class="panel-heading proj-build-item-panel-heading">
+                                                        <div class="container-fluid">
                                                             <div class="row">
-                        						                @if (build.BuildStatus == BuildStatus.Success) {
+                                                                @if (build.BuildStatus == BuildStatus.Success)
+                                                                {
                                                                     <div class="col-sm-8">
                                                                         <p>Build completed on @build.Finished.ToString(buildTimeFormat) (UTC)</p>
                                                                     </div>
-                            						                <div class="col-sm-4">
-                                                                        <a class="btn btn-default" href="@build.DownloadLink" style="float: right;">Download</a>
-                            						                </div>
-                        						                }
-        										                else {
+                                                                    <div class="col-sm-4">
+                                                                        <a class="btn btn-default" href="@build.DownloadLink" style="        float: right;">Download</a>
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
                                                                     <div class="col-sm-8">
                                                                         <p>Build @build.BuildStatus.ToString() (Build job created on @build.Created.ToString(buildTimeFormat)) (UTC)</p>
                                                                     </div>
-        										                }
-                        					                </div>
+                                                                }
+                                                            </div>
                                                         </div>
-    									            </div>
-    								            </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-					                }
-					            }
-				            }
-				        </div>
-			        </div>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
                     activeTabSet = true;
-    		    }
-			</div>
+                }
+            </div>
         </div>
     </div>
 }

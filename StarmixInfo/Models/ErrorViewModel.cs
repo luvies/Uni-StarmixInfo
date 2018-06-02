@@ -1,5 +1,3 @@
-using System;
-
 namespace StarmixInfo.Models
 {
     public class ErrorViewModel

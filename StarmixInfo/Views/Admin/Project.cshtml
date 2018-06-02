@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = (Model == null ? "New" : "Edit") + " Project";
 }
-
 <div class="row">
     <div class="col-sm-12">
         <form method="post" asp-action="@(Model != null ? "Edit" : "New")" asp-route-id="@(Model?.ProjectID.ToString() ?? "")">
@@ -30,10 +29,12 @@
                 <lable for="gdocfolderid">Google Drive Folder ID: </lable>
                 <input type="text" class="form-control" name="gdocfolderid" id="gdocfolderid" value="@(Model?.GDocFolderID ?? "")">
             </div>
-            @if (Model == null) {
+            @if (Model == null)
+            {
                 <button type="submit" class="btn btn-success" style="float: right;">Create</button>
             }
-            else {
+            else
+            {
                 <button type="submit" class="btn btn-default" style="float: right;">Save</button>
             }
         </form>

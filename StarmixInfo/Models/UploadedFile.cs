@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace StarmixInfo.Models
 {
     public struct UploadedFile

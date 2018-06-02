@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
 @section Styles {
     <style>
         #central-hall {
@@ -13,7 +12,6 @@
             margin-right: -5px;
             margin-bottom: -20px;
             padding: 0;
-
             background-image: url("/images/central-hall-pixelated-with-sign.png");
             background-position: center;
             background-repeat: no-repeat;
@@ -29,12 +27,10 @@
         }
     </style>
 }
-
 @section Scripts {
     <script src="~/game/TemplateData/UnityProgress.js"></script>
     <script src="~/game/Build/UnityLoader.js"></script>
 }
-
 @section PreBody {
     <div id="central-hall">
         <div class="webgl-content">
@@ -49,20 +45,21 @@
         </div>
     </div>
 }
-
-@if (Model == null) {
+@if (Model == null)
+{
     <div class="row">
         <div class="col-sm-12">
             <h1>No project set as current</h1>
-    	</div>
+        </div>
     </div>
 }
-else {
+else
+{
     <div class="row">
         <div class="col-sm-12">
             <h1>@Model.Name</h1>
-    	    <p>@Model.ShortDesc</p>
-    	</div>
+            <p>@Model.ShortDesc</p>
+        </div>
     </div>
     <hr />
     @Html.Partial("_ProjectLongDesc", Model.LongDesc)

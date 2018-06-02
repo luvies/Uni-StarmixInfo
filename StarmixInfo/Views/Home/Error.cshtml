@@ -2,18 +2,19 @@
 @{
     ViewData["Title"] = "Error";
 }
-
-@if (Model.Code == "404") {
+@if (Model.Code == "404")
+{
     <div class="row">
         <div class="col-sm-7">
             <h1>Hmmmmmmmm... that doesn't seem to be a page</h1>
             <p style="margin-top: 40px;">But if you think about it, what really is a page?</p>
-	    </div>
-	    <div class="col-sm-5">
-            <img src="/images/thinking.jpg"/>
-	    </div>
+        </div>
+        <div class="col-sm-5">
+            <img src="/images/thinking.jpg" />
+        </div>
     </div>
-    if (Model.RequestId != null) {
+    if (Model.RequestId != null)
+    {
         <div class="row" style="margin-top: 80px;">
             <div class="col-sm-12">
                 <p>Request ID:</p>
@@ -22,7 +23,8 @@
         </div>
     }
 }
-else {
+else
+{
     <h2>@Model.Message</h2>
     <p>An error occurred while processing your request.</p>
     if (Model.RequestId != null)

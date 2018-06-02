@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using StarmixInfo.Models.Data;
 
 namespace StarmixInfo.Models

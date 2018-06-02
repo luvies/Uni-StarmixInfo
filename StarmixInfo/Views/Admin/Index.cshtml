@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Admin";
 }
-
 @section Styles {
     <style>
         .admin-proj-btn {
@@ -13,47 +12,50 @@
         }
     </style>
 }
-
 @*
-status codes:
-1: create succeeded
-2: create failed
-3: update succeeded
-4: update failed
-5: delete successed
-6: delete failed
-7: current project set
+    status codes:
+    1: create succeeded
+    2: create failed
+    3: update succeeded
+    4: update failed
+    5: delete successed
+    6: delete failed
+    7: current project set
 *@
-@if (Model.Item1 > 0) {
-    switch (Model.Item1) {
+@if (Model.Item1 > 0)
+{
+    switch (Model.Item1)
+    {
         case 1:
-                Html.RenderPartial("_StatusPanel", (true, "New project created"));
+            Html.RenderPartial("_StatusPanel", (true, "New project created"));
             break;
         case 2:
-                Html.RenderPartial("_StatusPanel", (false, "Unable to create project"));
+            Html.RenderPartial("_StatusPanel", (false, "Unable to create project"));
             break;
         case 3:
-                Html.RenderPartial("_StatusPanel", (true, "Project updated"));
+            Html.RenderPartial("_StatusPanel", (true, "Project updated"));
             break;
         case 4:
-                Html.RenderPartial("_StatusPanel", (false, "Unable to update project"));
+            Html.RenderPartial("_StatusPanel", (false, "Unable to update project"));
             break;
         case 5:
-                Html.RenderPartial("_StatusPanel", (true, "Project deleted"));
+            Html.RenderPartial("_StatusPanel", (true, "Project deleted"));
             break;
         case 6:
-                Html.RenderPartial("_StatusPanel", (false, "Unable to delete project"));
+            Html.RenderPartial("_StatusPanel", (false, "Unable to delete project"));
             break;
         case 7:
-                Html.RenderPartial("_StatusPanel", (true, "Current project set"));
+            Html.RenderPartial("_StatusPanel", (true, "Current project set"));
             break;
     }
 }
 <div class="row">
     <div class="col-sm-12">
         <div class="panel-group">
-            @foreach (var proj in Model.Item2) {
-                <div class="panel @(proj.ProjectID == Model.Item3 ? "panel-success" : "panel-default")"> @* add current project highlight *@
+            @foreach (var proj in Model.Item2)
+            {
+                <div class="panel @(proj.ProjectID == Model.Item3 ? "panel-success" : "panel-default")">
+                    @* add current project highlight *@
                     <div class="panel-heading">
                         <h3>@proj.Name</h3>
                         <p>@proj.ShortDesc</p>
@@ -64,13 +66,14 @@ status codes:
                             <div class="row">
                                 <div class="col-sm-4 col-sm-offset-8">
                                     <form class="admin-proj-btn" method="post" onsubmit="return confirm('Are you sure you want to delete this project?')"
-                                            asp-action="Delete" asp-route-id="@proj.ProjectID">
+                                          asp-action="Delete" asp-route-id="@proj.ProjectID">
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                     <form class="admin-proj-btn" method="get" asp-action="Edit" asp-route-id="@proj.ProjectID">
                                         <button type="submit" class="btn btn-primary">Edit</button>
                                     </form>
-                                    @if (proj.ProjectID != Model.Item3) {
+                                    @if (proj.ProjectID != Model.Item3)
+                                    {
                                         <form class="admin-proj-btn" method="get" asp-action="SetCurrent" asp-route-id="@proj.ProjectID">
                                             <button type="submit" class="btn btn-warning">Set As Current Project</button>
                                         </form>

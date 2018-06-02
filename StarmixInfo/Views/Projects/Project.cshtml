@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Project " + Model.Name;
 }
-
 @section Styles {
     <style>
         .gdoc-embed {
@@ -23,24 +22,25 @@
         }
     </style>
 }
-
-@if (Model == null) {
+@if (Model == null)
+{
     <div class="row">
         <div class="col-sm-12">
             <h1>Unable to find project</h1>
         </div>
     </div>
 }
-else {
+else
+{
     <div class="row">
         <div class="col-sm-12">
             <h1>@Model.Name</h1>
-    	</div>
+        </div>
     </div>
     <div class="row">
         <div class="col-xs-9">
             <p>@Model.ShortDesc</p>
-    	</div>
+        </div>
         @Html.Partial("_ProjectViewButtons", (Model, false))
     </div>
     <hr />
@@ -49,11 +49,11 @@ else {
     <div class="row">
         <div class="col-sm-12">
             <h3>Documentation</h3>
-	    </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-12 gdoc-embed">
             <iframe src="https://drive.google.com/embeddedfolderview?id=@(Model.GDocFolderID)#list"></iframe>
-    	</div>
+        </div>
     </div>
 }

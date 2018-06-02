@@ -27,7 +27,7 @@ namespace StarmixInfo.Services
 #if (TEST_ADMIN || !DEBUG)
                 if (_httpContext.Request.Cookies.ContainsKey(AdminCookieID) &&
                     _dbSettings[AdminSettingID] == _httpContext.Request.Cookies[AdminCookieID])
-                        return true;
+                    return true;
                 return false;
 #elif (!TEST_ADMIN && DEBUG)
                 return true;
