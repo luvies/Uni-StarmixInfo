@@ -1,6 +1,6 @@
 # used for building the archive docker container
 IMAGE=starmixinfo-archive-img
-CONTAINER=starmixinfo-archive
+CONTAINER=ws_starmixinfo_archive
 
 .PHONY: build
 build:
