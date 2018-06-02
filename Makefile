@@ -34,3 +34,4 @@ test-stop:
 
 clean:
 	docker rmi -f $(IMAGE)
+	docker image prune -f
